@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023229262A1A00283615 /* TagCollectionViewCell.swift */; };
+		37E0023529262A2800283615 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023429262A2800283615 /* ProductCollectionViewCell.swift */; };
 		DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2952924C38500ACF342 /* DetailViewController.swift */; };
 		DD0FC2982924C39800ACF342 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */; };
 		DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2992924C39E00ACF342 /* SearchViewController.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37E0023229262A1A00283615 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		37E0023429262A2800283615 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0FC2952924C38500ACF342 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		DD0FC2992924C39E00ACF342 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				DD0FC2952924C38500ACF342 /* DetailViewController.swift */,
+				37E0023229262A1A00283615 /* TagCollectionViewCell.swift */,
+				37E0023429262A2800283615 /* ProductCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -311,11 +317,13 @@
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
 				DDC28C7D29232CD6003B87BB /* UIImageView+.swift in Sources */,
 				DDC28C8329232D75003B87BB /* Identifier.swift in Sources */,
+				37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */,
 				DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */,
 				DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */,
 				DDC28C8729232E0E003B87BB /* UIView+.swift in Sources */,
 				DDC28C54292320E0003B87BB /* SceneDelegate.swift in Sources */,
 				DD0FC2982924C39800ACF342 /* SearchResultViewController.swift in Sources */,
+				37E0023529262A2800283615 /* ProductCollectionViewCell.swift in Sources */,
 				DDC28C7F29232D27003B87BB /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
