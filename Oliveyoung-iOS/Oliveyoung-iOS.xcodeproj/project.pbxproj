@@ -13,8 +13,6 @@
 		DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC29B2924C3A500ACF342 /* HomeViewController.swift */; };
 		DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C51292320E0003B87BB /* AppDelegate.swift */; };
 		DDC28C54292320E0003B87BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C53292320E0003B87BB /* SceneDelegate.swift */; };
-		DDC28C56292320E0003B87BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C55292320E0003B87BB /* ViewController.swift */; };
-		DDC28C59292320E0003B87BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC28C57292320E0003B87BB /* Main.storyboard */; };
 		DDC28C5B292320E1003B87BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC28C5A292320E1003B87BB /* Assets.xcassets */; };
 		DDC28C5E292320E1003B87BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC28C5C292320E1003B87BB /* LaunchScreen.storyboard */; };
 		DDC28C6729232110003B87BB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DDC28C6629232110003B87BB /* Then */; };
@@ -40,8 +38,6 @@
 		DDC28C4E292320E0003B87BB /* Oliveyoung-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oliveyoung-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC28C51292320E0003B87BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC28C53292320E0003B87BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DDC28C55292320E0003B87BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DDC28C58292320E0003B87BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDC28C5A292320E1003B87BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDC28C5D292320E1003B87BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDC28C5F292320E1003B87BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,8 +88,6 @@
 			children = (
 				DDC28C6E29232210003B87BB /* Resource */,
 				DDC28C6F29232220003B87BB /* Source */,
-				DDC28C55292320E0003B87BB /* ViewController.swift */,
-				DDC28C57292320E0003B87BB /* Main.storyboard */,
 				DDC28C5F292320E1003B87BB /* Info.plist */,
 			);
 			path = "Oliveyoung-iOS";
@@ -299,7 +293,6 @@
 				DDC28C5E292320E1003B87BB /* LaunchScreen.storyboard in Resources */,
 				DDC28C742923234D003B87BB /* Colors.xcassets in Resources */,
 				DDC28C5B292320E1003B87BB /* Assets.xcassets in Resources */,
-				DDC28C59292320E0003B87BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +310,6 @@
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
 				DDC28C7D29232CD6003B87BB /* UIImageView+.swift in Sources */,
-				DDC28C56292320E0003B87BB /* ViewController.swift in Sources */,
 				DDC28C8329232D75003B87BB /* Identifier.swift in Sources */,
 				DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */,
 				DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */,
@@ -331,14 +323,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DDC28C57292320E0003B87BB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDC28C58292320E0003B87BB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DDC28C5C292320E1003B87BB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -476,7 +460,6 @@
 				INFOPLIST_FILE = "Oliveyoung-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -504,7 +487,6 @@
 				INFOPLIST_FILE = "Oliveyoung-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
