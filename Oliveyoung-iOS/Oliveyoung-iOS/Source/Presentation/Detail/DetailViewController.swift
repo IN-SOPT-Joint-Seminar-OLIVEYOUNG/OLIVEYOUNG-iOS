@@ -12,7 +12,7 @@ import SnapKit
 import SwiftyColor
 
 //MARK: - DetailViewController
-final class DetailViewController: ViewController {
+final class DetailViewController: UIViewController {
     
     //MARK: - Lazy Components
     private let productCollectionView: UICollectionView = {
@@ -93,14 +93,14 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UICollectionViewDataSource
-extension DetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
-    
-    
-}
+//extension DetailViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
+//
+//    
+//}
