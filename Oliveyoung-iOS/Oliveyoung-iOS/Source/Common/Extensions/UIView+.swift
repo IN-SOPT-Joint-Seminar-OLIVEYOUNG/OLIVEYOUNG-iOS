@@ -8,11 +8,8 @@
 import UIKit.UIView
 
 extension UIView {
-    func addSubviews(_ views: [UIView]) {
-        views.forEach {
-            self.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
+    func addSubviews(_ views: UIView...) {
+        views.forEach { self.addSubview($0) }
     }
     
     var cornerRadius: CGFloat {
