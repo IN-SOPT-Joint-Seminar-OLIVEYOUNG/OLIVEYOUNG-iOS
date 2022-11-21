@@ -21,6 +21,7 @@
 		DD1C74DC292B57B300E3E7A2 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */; };
 		DD1C74DD292B57B300E3E7A2 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D4292B57B300E3E7A2 /* Pretendard-Light.otf */; };
 		DDB759F0292B88B800A419C0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB759EF292B88B800A419C0 /* UIColor+.swift */; };
+		DD1C74DF292B675500E3E7A2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C74DE292B675500E3E7A2 /* UIViewController+.swift */; };
 		DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C51292320E0003B87BB /* AppDelegate.swift */; };
 		DDC28C54292320E0003B87BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C53292320E0003B87BB /* SceneDelegate.swift */; };
 		DDC28C5B292320E1003B87BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC28C5A292320E1003B87BB /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		DD1C74D4292B57B300E3E7A2 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		DDB759EF292B88B800A419C0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		DD1C74DE292B675500E3E7A2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		DDC28C4E292320E0003B87BB /* Oliveyoung-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oliveyoung-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC28C51292320E0003B87BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC28C53292320E0003B87BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				DDC28C8829232E52003B87BB /* UILabel+.swift */,
 				DDC28C8F2923BB6E003B87BB /* UIFont+.swift */,
 				DDB759EF292B88B800A419C0 /* UIColor+.swift */,
+				DD1C74DE292B675500E3E7A2 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			files = (
 				DDC28C902923BB6E003B87BB /* UIFont+.swift in Sources */,
 				DDC28C8129232D47003B87BB /* ViewController.swift in Sources */,
+				DD1C74DF292B675500E3E7A2 /* UIViewController+.swift in Sources */,
 				DDC28C8529232D91003B87BB /* Image.swift in Sources */,
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
