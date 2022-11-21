@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3709E087292A394300222F3E /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709E086292A394300222F3E /* ProductModel.swift */; };
 		DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2952924C38500ACF342 /* DetailViewController.swift */; };
 		DD0FC2982924C39800ACF342 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */; };
 		DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2992924C39E00ACF342 /* SearchViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3709E086292A394300222F3E /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		DD0FC2952924C38500ACF342 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		DD0FC2992924C39E00ACF342 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
