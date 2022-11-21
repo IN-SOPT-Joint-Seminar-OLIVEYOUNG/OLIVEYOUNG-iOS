@@ -251,6 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				DD0FC2952924C38500ACF342 /* DetailViewController.swift */,
+				3709E086292A394300222F3E /* ProductModel.swift */,
+				37E0023229262A1A00283615 /* TagCollectionViewCell.swift */,
+				37E0023429262A2800283615 /* ProductCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -325,6 +328,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3709E0B0292B3BF300222F3E /* Pretendard-ExtraLight.otf in Resources */,
+				3709E0AE292B3BF300222F3E /* Pretendard-Bold.otf in Resources */,
+				3709E0A3292B3BF300222F3E /* Pretendard-Thin.ttf in Resources */,
 				DDC28C5E292320E1003B87BB /* LaunchScreen.storyboard in Resources */,
 				DD1C74D7292B57B300E3E7A2 /* Pretendard-Bold.otf in Resources */,
 				DD1C74D9292B57B300E3E7A2 /* Pretendard-ExtraBold.otf in Resources */,
@@ -350,6 +356,7 @@
 				DDC28C902923BB6E003B87BB /* UIFont+.swift in Sources */,
 				DDC28C8129232D47003B87BB /* ViewController.swift in Sources */,
 				DDC28C8529232D91003B87BB /* Image.swift in Sources */,
+				3709E087292A394300222F3E /* ProductModel.swift in Sources */,
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
