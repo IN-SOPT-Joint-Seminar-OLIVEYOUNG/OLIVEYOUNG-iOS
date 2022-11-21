@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023229262A1A00283615 /* TagCollectionViewCell.swift */; };
 		37E0023529262A2800283615 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023429262A2800283615 /* ProductCollectionViewCell.swift */; };
+		3709E087292A394300222F3E /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709E086292A394300222F3E /* ProductModel.swift */; };
 		DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2952924C38500ACF342 /* DetailViewController.swift */; };
 		DD0FC2982924C39800ACF342 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */; };
 		DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0FC2992924C39E00ACF342 /* SearchViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3709E086292A394300222F3E /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		37E0023229262A1A00283615 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		37E0023429262A2800283615 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0FC2952924C38500ACF342 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0FC2952924C38500ACF342 /* DetailViewController.swift */,
+				3709E086292A394300222F3E /* ProductModel.swift */,
 				37E0023229262A1A00283615 /* TagCollectionViewCell.swift */,
 				37E0023429262A2800283615 /* ProductCollectionViewCell.swift */,
 			);
@@ -331,6 +334,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3709E0B0292B3BF300222F3E /* Pretendard-ExtraLight.otf in Resources */,
+				3709E0AE292B3BF300222F3E /* Pretendard-Bold.otf in Resources */,
+				3709E0A3292B3BF300222F3E /* Pretendard-Thin.ttf in Resources */,
 				DDC28C5E292320E1003B87BB /* LaunchScreen.storyboard in Resources */,
 				DD1C74D7292B57B300E3E7A2 /* Pretendard-Bold.otf in Resources */,
 				DD1C74D9292B57B300E3E7A2 /* Pretendard-ExtraBold.otf in Resources */,
@@ -356,6 +362,7 @@
 				DDC28C902923BB6E003B87BB /* UIFont+.swift in Sources */,
 				DDC28C8129232D47003B87BB /* ViewController.swift in Sources */,
 				DDC28C8529232D91003B87BB /* Image.swift in Sources */,
+				3709E087292A394300222F3E /* ProductModel.swift in Sources */,
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
