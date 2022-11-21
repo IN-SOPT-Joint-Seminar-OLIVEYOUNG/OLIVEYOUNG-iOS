@@ -35,6 +35,7 @@
 		DD1C74DB292B57B300E3E7A2 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D2292B57B300E3E7A2 /* Pretendard-Regular.otf */; };
 		DD1C74DC292B57B300E3E7A2 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */; };
 		DD1C74DD292B57B300E3E7A2 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D4292B57B300E3E7A2 /* Pretendard-Light.otf */; };
+		DD76E6D0292B9CE90008A36C /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD76E6CF292B9CE90008A36C /* Moya */; };
 		DDB759F0292B88B800A419C0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB759EF292B88B800A419C0 /* UIColor+.swift */; };
 		DD1C74DF292B675500E3E7A2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1C74DE292B675500E3E7A2 /* UIViewController+.swift */; };
 		DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C51292320E0003B87BB /* AppDelegate.swift */; };
@@ -112,6 +113,7 @@
 				DDC28C7B29232C9F003B87BB /* Kingfisher in Frameworks */,
 				DDC28C6729232110003B87BB /* Then in Frameworks */,
 				DDC28C6D29232136003B87BB /* SwiftyColor in Frameworks */,
+				DD76E6D0292B9CE90008A36C /* Moya in Frameworks */,
 				DDC28C6A29232125003B87BB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +425,7 @@
 				DDC28C6929232125003B87BB /* SnapKit */,
 				DDC28C6C29232136003B87BB /* SwiftyColor */,
 				DDC28C7A29232C9F003B87BB /* Kingfisher */,
+				DD76E6CF292B9CE90008A36C /* Moya */,
 			);
 			productName = "Oliveyoung-iOS";
 			productReference = DDC28C4E292320E0003B87BB /* Oliveyoung-iOS.app */;
@@ -457,6 +460,7 @@
 				DDC28C6829232125003B87BB /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DDC28C6B29232136003B87BB /* XCRemoteSwiftPackageReference "SwiftyColor" */,
 				DDC28C7929232C9F003B87BB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DD76E6CE292B9CE90008A36C /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = DDC28C4F292320E0003B87BB /* Products */;
 			projectDirPath = "";
@@ -734,6 +738,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DD76E6CE292B9CE90008A36C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		DDC28C6529232110003B87BB /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -769,6 +781,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DD76E6CF292B9CE90008A36C /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD76E6CE292B9CE90008A36C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
 		DDC28C6629232110003B87BB /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DDC28C6529232110003B87BB /* XCRemoteSwiftPackageReference "Then" */;
