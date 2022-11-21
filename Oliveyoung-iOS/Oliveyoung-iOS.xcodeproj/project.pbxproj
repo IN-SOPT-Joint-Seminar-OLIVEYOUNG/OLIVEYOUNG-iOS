@@ -23,15 +23,6 @@
 		DD1C74DB292B57B300E3E7A2 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D2292B57B300E3E7A2 /* Pretendard-Regular.otf */; };
 		DD1C74DC292B57B300E3E7A2 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */; };
 		DD1C74DD292B57B300E3E7A2 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74D4292B57B300E3E7A2 /* Pretendard-Light.otf */; };
-		DD1C74EA292B7AA400E3E7A2 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E1292B7AA400E3E7A2 /* Pretendard-Medium.ttf */; };
-		DD1C74EB292B7AA400E3E7A2 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E2292B7AA400E3E7A2 /* Pretendard-Black.ttf */; };
-		DD1C74EC292B7AA400E3E7A2 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E3292B7AA400E3E7A2 /* Pretendard-Regular.ttf */; };
-		DD1C74ED292B7AA400E3E7A2 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E4292B7AA400E3E7A2 /* Pretendard-Thin.ttf */; };
-		DD1C74EE292B7AA400E3E7A2 /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E5292B7AA400E3E7A2 /* Pretendard-ExtraLight.ttf */; };
-		DD1C74EF292B7AA400E3E7A2 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E6292B7AA400E3E7A2 /* Pretendard-SemiBold.ttf */; };
-		DD1C74F0292B7AA400E3E7A2 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E7292B7AA400E3E7A2 /* Pretendard-ExtraBold.ttf */; };
-		DD1C74F1292B7AA400E3E7A2 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E8292B7AA400E3E7A2 /* Pretendard-Bold.ttf */; };
-		DD1C74F2292B7AA400E3E7A2 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1C74E9292B7AA400E3E7A2 /* Pretendard-Light.ttf */; };
 		DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C51292320E0003B87BB /* AppDelegate.swift */; };
 		DDC28C54292320E0003B87BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C53292320E0003B87BB /* SceneDelegate.swift */; };
 		DDC28C5B292320E1003B87BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC28C5A292320E1003B87BB /* Assets.xcassets */; };
@@ -68,15 +59,6 @@
 		DD1C74D2292B57B300E3E7A2 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		DD1C74D4292B57B300E3E7A2 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
-		DD1C74E1292B7AA400E3E7A2 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
-		DD1C74E2292B7AA400E3E7A2 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.ttf"; sourceTree = "<group>"; };
-		DD1C74E3292B7AA400E3E7A2 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
-		DD1C74E4292B7AA400E3E7A2 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.ttf"; sourceTree = "<group>"; };
-		DD1C74E5292B7AA400E3E7A2 /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
-		DD1C74E6292B7AA400E3E7A2 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
-		DD1C74E7292B7AA400E3E7A2 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
-		DD1C74E8292B7AA400E3E7A2 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
-		DD1C74E9292B7AA400E3E7A2 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
 		DDC28C4E292320E0003B87BB /* Oliveyoung-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oliveyoung-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC28C51292320E0003B87BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC28C53292320E0003B87BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +94,6 @@
 		DD1C74CB292B56D800E3E7A2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				DD1C74E0292B7AA400E3E7A2 /* alternative */,
 				DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */,
 				DD1C74CE292B57B300E3E7A2 /* Pretendard-Bold.otf */,
 				DD1C74D0292B57B300E3E7A2 /* Pretendard-ExtraBold.otf */,
@@ -124,22 +105,6 @@
 				DD1C74CD292B57B200E3E7A2 /* Pretendard-Thin.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		DD1C74E0292B7AA400E3E7A2 /* alternative */ = {
-			isa = PBXGroup;
-			children = (
-				DD1C74E1292B7AA400E3E7A2 /* Pretendard-Medium.ttf */,
-				DD1C74E2292B7AA400E3E7A2 /* Pretendard-Black.ttf */,
-				DD1C74E3292B7AA400E3E7A2 /* Pretendard-Regular.ttf */,
-				DD1C74E4292B7AA400E3E7A2 /* Pretendard-Thin.ttf */,
-				DD1C74E5292B7AA400E3E7A2 /* Pretendard-ExtraLight.ttf */,
-				DD1C74E6292B7AA400E3E7A2 /* Pretendard-SemiBold.ttf */,
-				DD1C74E7292B7AA400E3E7A2 /* Pretendard-ExtraBold.ttf */,
-				DD1C74E8292B7AA400E3E7A2 /* Pretendard-Bold.ttf */,
-				DD1C74E9292B7AA400E3E7A2 /* Pretendard-Light.ttf */,
-			);
-			path = alternative;
 			sourceTree = "<group>";
 		};
 		DDC28C45292320E0003B87BB = {
@@ -369,22 +334,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD1C74EF292B7AA400E3E7A2 /* Pretendard-SemiBold.ttf in Resources */,
-				DD1C74EA292B7AA400E3E7A2 /* Pretendard-Medium.ttf in Resources */,
 				DDC28C5E292320E1003B87BB /* LaunchScreen.storyboard in Resources */,
-				DD1C74EC292B7AA400E3E7A2 /* Pretendard-Regular.ttf in Resources */,
 				DD1C74D7292B57B300E3E7A2 /* Pretendard-Bold.otf in Resources */,
 				DD1C74D9292B57B300E3E7A2 /* Pretendard-ExtraBold.otf in Resources */,
-				DD1C74F2292B7AA400E3E7A2 /* Pretendard-Light.ttf in Resources */,
-				DD1C74F1292B7AA400E3E7A2 /* Pretendard-Bold.ttf in Resources */,
 				DD1C74D8292B57B300E3E7A2 /* Pretendard-SemiBold.otf in Resources */,
 				DD1C74D6292B57B300E3E7A2 /* Pretendard-Thin.otf in Resources */,
-				DD1C74EE292B7AA400E3E7A2 /* Pretendard-ExtraLight.ttf in Resources */,
 				DD1C74DD292B57B300E3E7A2 /* Pretendard-Light.otf in Resources */,
-				DD1C74ED292B7AA400E3E7A2 /* Pretendard-Thin.ttf in Resources */,
-				DD1C74EB292B7AA400E3E7A2 /* Pretendard-Black.ttf in Resources */,
 				DDC28C742923234D003B87BB /* Colors.xcassets in Resources */,
-				DD1C74F0292B7AA400E3E7A2 /* Pretendard-ExtraBold.ttf in Resources */,
 				DD1C74DC292B57B300E3E7A2 /* Pretendard-Black.otf in Resources */,
 				DD1C74D5292B57B300E3E7A2 /* Pretendard-ExtraLight.otf in Resources */,
 				DD1C74DB292B57B300E3E7A2 /* Pretendard-Regular.otf in Resources */,
