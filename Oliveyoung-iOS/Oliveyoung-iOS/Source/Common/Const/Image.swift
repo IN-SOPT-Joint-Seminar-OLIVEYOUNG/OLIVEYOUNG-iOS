@@ -14,6 +14,7 @@ extension Const {
         /// 종류? ex. icon, button, image
         static let arrowIcon18X18 = UIImage(named: "arrowIcon18X18")
         static let categoryIcon = UIImage(named: "categoryIcon")
+        static let back = UIImage(named: "back")
         static let checkedbox = UIImage(named: "checkedbox")
         static let error = UIImage(named: "error")
         static let facebook = UIImage(named: "facebook")
