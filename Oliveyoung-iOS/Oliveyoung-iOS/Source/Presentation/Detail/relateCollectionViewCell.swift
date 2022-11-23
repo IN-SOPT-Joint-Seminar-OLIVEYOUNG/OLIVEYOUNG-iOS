@@ -1,8 +1,8 @@
 //
-//  ProductCollectionViewCell.swift
+//  relateCollectionViewCell.swift
 //  Oliveyoung-iOS
 //
-//  Created by Joon Baek on 2022/11/17.
+//  Created by Joon Baek on 2022/11/23.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import SnapKit
 import SwiftyColor
 
 //MARK: - ProductCollectionViewCell
-final class ProductCollectionViewCell: UICollectionViewCell {
+final class relateCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
@@ -20,20 +20,28 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     private let productLabel = UILabel().then {
         $0.font = .bodyBody2
         $0.textColor = 0x2f2f2f.color
+        $0.numberOfLines = 0
     }
     
     private let descriptionLabel = UILabel().then {
         $0.font = .bodyCaption
         $0.textColor = 0x2f2f2f.color
+        $0.numberOfLines = 0
     }
     private let priceLabel = UILabel().then {
         $0.font = .bodyCaption2
         $0.textColor = 0x2f2f2f.color
+        $0.numberOfLines = 0
     }
     private let wonLabel = UILabel().then {
         $0.font = .bodyCaption2
         $0.textColor = 0x2f2f2f.color
         $0.text = "원"
+    }
+    
+    private let discountLabel = UILabel().then {
+        $0.font = .bodyBody2
+        $0.textColor = 0xf87171.color
     }
     
     //MARK: - Identifier
@@ -51,7 +59,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
 }
 
 //MARK: - Extensions
-extension ProductCollectionViewCell {
+extension relateCollectionViewCell {
     
     //MARK: - Layout Helpers
     private func layout() {
@@ -60,7 +68,8 @@ extension ProductCollectionViewCell {
             productLabel,
             descriptionLabel,
             priceLabel,
-            wonLabel
+            wonLabel,
+            discountLabel
         )
         
         productImageView.snp.makeConstraints {
@@ -88,16 +97,21 @@ extension ProductCollectionViewCell {
             $0.top.equalTo(priceLabel)
             $0.leading.equalTo(priceLabel.snp.trailing)
         }
+        
+        discountLabel.snp.makeConstraints {
+            $0.centerY.equalTo(priceLabel)
+            $0.trailing.equalToSuperview().offset(-1)
+        }
     }
     
     //MARK: - General Helpers
     
-    func dataBind(model: productModel) {
+    func dataBind(model: relateModel) {
         productImageView.image = UIImage(named: model.productImage)
         productLabel.text = model.name
         descriptionLabel.text = model.description
         priceLabel.text = model.price
+        discountLabel.text = model.discountRate
     }
     
 }
-

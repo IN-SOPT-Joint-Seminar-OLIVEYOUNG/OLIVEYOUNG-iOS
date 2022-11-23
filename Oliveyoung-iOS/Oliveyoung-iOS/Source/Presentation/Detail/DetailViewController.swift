@@ -41,6 +41,18 @@ final class DetailViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var relateCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
+    
     //MARK: - Components
     private let topContainerView = UIView()
     private let productImageContainerView = UIView()
@@ -184,6 +196,16 @@ final class DetailViewController: UIViewController {
         $0.textColor = 0x2f2f2f.color
     }
     
+    private let recommendLabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x2f2f2f.color
+    }
+    
+    private let relateLabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x2f2f2f.color
+    }
+    
     private let rateImageView = UIImageView(image: UIImage(named: "starRate"))
     private let singleStarImageView = UIImageView(image: UIImage(named: "star14X14"))
     private let productImageView = UIImageView(image: UIImage(named: "detailView"))
@@ -193,13 +215,16 @@ final class DetailViewController: UIViewController {
     //MARK: - Variables
     var tagList = ["립밤", "핸드크림", "틴트", "쿠션", "마스크팩"]
     
-    var productList:[productModel] = [
-        productModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000", discountRate:""),
-        productModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500", discountRate: ""),
-        productModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "", price: "28,000", discountRate: ""),
-        productModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "", price: "27,000", discountRate: "23%"),
-        productModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml ", productImage: "", price: "21,600", discountRate: "32%"),
-        productModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "", price: "19,310", discountRate: "5%")
+    var recommendList:[recommendModel] = [
+        recommendModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000"),
+        recommendModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500"),
+        recommendModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "", price: "28,000")
+        ]
+    
+    var relateList:[relateModel] = [
+        relateModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "", price: "27,000", discountRate: "23%"),
+        relateModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml ", productImage: "", price: "21,600", discountRate: "32%"),
+        relateModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "", price: "19,310", discountRate: "5%")
         
     ]
     
@@ -209,10 +234,15 @@ final class DetailViewController: UIViewController {
     final let tagInterItemSpacing: CGFloat = 8
     final let tagCellHeight: CGFloat = 27
     
-    final let productInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    final let productLineSpacing: CGFloat = 0
-    final let productInterItemSpacing: CGFloat = 15
-    final let productCellHeight: CGFloat = 148
+    final let recommendInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    final let recommendLineSpacing: CGFloat = 0
+    final let recommendInterItemSpacing: CGFloat = 15
+    final let recommendCellHeight: CGFloat = 148
+    
+    final let relateInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    final let relateLineSpacing: CGFloat = 0
+    final let relateInterItemSpacing: CGFloat = 15
+    final let relateCellHeight: CGFloat = 148
     
     //MARK: - Life Cycles
     override func viewDidLoad() {
@@ -300,6 +330,16 @@ extension DetailViewController {
             stockLabel
         )
         productDetailContainerView.addSubview(productImageView)
+        
+        recommendContainerView.addSubviews(
+            recommendLabel,
+            recommendCollectionView
+        )
+        
+        relatedProductContainerView.addSubviews(
+            relateLabel,
+            relateCollectionView
+        )
         
         // ContainerViews
         topContainerView.snp.makeConstraints {
@@ -594,6 +634,29 @@ extension DetailViewController {
             $0.edges.equalToSuperview()
         }
         
+        //recommendContainerView
+        recommendLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview()
+        }
+        
+        recommendCollectionView.snp.makeConstraints {
+            $0.top.equalTo(recommendLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(204)
+        }
+        
+        //relateContainerView
+        relateLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview()
+        }
+        
+        relateCollectionView.snp.makeConstraints {
+            $0.top.equalTo(relateLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(192)
+        }
     }
     
     //MARK: - General Helpers
@@ -615,8 +678,8 @@ extension DetailViewController {
 //        availableStoreContainerView.backgroundColor = .systemYellow
 //        tabbarButtonContainerView.backgroundColor = .systemGreen
 //        productDetailContainerView.backgroundColor = .systemBlue
-        recommendContainerView.backgroundColor = .systemPurple
-        relatedProductContainerView.backgroundColor = .systemCyan
+//        recommendContainerView.backgroundColor = .systemPurple
+//        relatedProductContainerView.backgroundColor = .systemCyan
         bottomContainerView.backgroundColor = .systemGray6
     }
     
@@ -643,6 +706,8 @@ extension DetailViewController {
         self.availableStoreLabel.text = "홍대공항철도점"
         self.storeStatusLabel.text = "영업중"
         self.stockLabel.text = "재고보유 가능성 높음"
+        self.relateLabel.text = "이 상품은 어떠세요?"
+        self.recommendLabel.text = "방금 본 것과 유사한 상품이에요"
     }
     
     private func viewConfig() {
@@ -659,13 +724,16 @@ extension DetailViewController {
     private func configDelegate() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-//        productCollectionView.delegate = self
-//        productCollectionView.dataSource = self
+        recommendCollectionView.delegate = self
+        recommendCollectionView.dataSource = self
+        relateCollectionView.delegate = self
+        relateCollectionView.dataSource = self
     }
 
     private func register() {
         tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-//        productCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        recommendCollectionView.register(recommendCollectionViewCell.self, forCellWithReuseIdentifier: recommendCollectionViewCell.identifier)
+        relateCollectionView.register(relateCollectionViewCell.self, forCellWithReuseIdentifier: relateCollectionViewCell.identifier)
     }
     
 //MARK: - Action Helpers
@@ -675,34 +743,77 @@ extension DetailViewController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let tempLabel: UILabel = UILabel()
-        tempLabel.text = tagList[indexPath.item]
-        return CGSize(width: tempLabel.intrinsicContentSize.width, height: 27)
+        if collectionView == tagCollectionView {
+            let tempLabel: UILabel = UILabel()
+            tempLabel.text = tagList[indexPath.item]
+            return CGSize(width: tempLabel.intrinsicContentSize.width, height: 27)
+        } else if collectionView == recommendCollectionView {
+            return CGSize(width: 105, height: 204)
+        } else {
+            return CGSize(width: 105, height: 192)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return tagLineSpacing
+        if collectionView == tagCollectionView {
+            return tagLineSpacing
+        } else if collectionView == recommendCollectionView {
+            return recommendLineSpacing
+        } else {
+            return relateLineSpacing
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return tagInterItemSpacing
+        if collectionView == tagCollectionView {
+            return tagInterItemSpacing
+        } else if collectionView == recommendCollectionView {
+            return recommendInterItemSpacing
+        } else {
+            return relateInterItemSpacing
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return tagInset
+        if collectionView == tagCollectionView {
+            return tagInset
+        } else if collectionView == recommendCollectionView {
+            return recommendInset
+        } else {
+            return relateInset
+        }
     }
 }
 
 //MARK: - UICollectionViewDataSource
 extension DetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagList.count
+        
+        if collectionView == tagCollectionView {
+            return tagList.count
+        } else if collectionView == recommendCollectionView {
+            return 3
+        } else {
+            return 3
+        }
+ 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else { return UICollectionViewCell() }
-        tagCell.dataBind(tag: tagList[indexPath.item])
-        return tagCell
+        if collectionView == tagCollectionView {
+            guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else { return UICollectionViewCell() }
+            tagCell.dataBind(tag: tagList[indexPath.item])
+            return tagCell
+        } else if collectionView == recommendCollectionView {
+            guard let recommendCell = collectionView.dequeueReusableCell(withReuseIdentifier: recommendCollectionViewCell.identifier, for: indexPath) as?
+                    recommendCollectionViewCell else { return UICollectionViewCell() }
+            recommendCell.dataBind(model: recommendList[indexPath.item])
+            return recommendCell
+        } else {
+            guard let relateCell = collectionView.dequeueReusableCell(withReuseIdentifier: relateCollectionViewCell.identifier, for: indexPath) as?
+                    relateCollectionViewCell else { return UICollectionViewCell() }
+            relateCell.dataBind(model: relateList[indexPath.item])
+            return relateCell
+        }
     }
 }

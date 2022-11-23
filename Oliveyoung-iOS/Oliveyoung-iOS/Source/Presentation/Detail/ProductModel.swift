@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct productModel {
+struct recommendModel {
+    var name: String
+    var description: String
+    var productImage: String
+    var price: String
+}
+
+struct relateModel {
     var name: String
     var description: String
     var productImage: String
