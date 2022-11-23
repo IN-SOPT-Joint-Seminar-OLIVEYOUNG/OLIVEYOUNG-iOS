@@ -20,7 +20,10 @@ final class TagCollectionViewCell: UICollectionViewCell {
         $0.cornerRadius = 0.5
     }
     
-    private let tagLabel = UILabel()
+    private let tagLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 12)
+        $0.textColor = 0xffffff.color
+    }
     
     //MARK: - Identifier
     static let identifier = "TagCollectionViewCell"

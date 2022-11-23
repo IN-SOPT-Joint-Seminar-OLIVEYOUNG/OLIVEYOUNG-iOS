@@ -29,7 +29,7 @@ final class DetailViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var productCollectionView: UICollectionView = {
+    private lazy var recommendCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
@@ -49,7 +49,7 @@ final class DetailViewController: UIViewController {
     private let availableStoreContainerView = UIView()
     private let tabbarButtonContainerView = UIView()
     private let productDetailContainerView = UIView()
-    private let recommandContainerView = UIView()
+    private let recommendContainerView = UIView()
     private let relatedProductContainerView = UIView()
     private let bottomContainerView = UIView()
     
@@ -57,7 +57,7 @@ final class DetailViewController: UIViewController {
     private let deliveryUnderlineView = UIView()
     private let availableUnderlineView = UIView()
     private let productDetailUnderlineView = UIView()
-    private let recommandUnderlineView = UIView()
+    private let recommendUnderlineView = UIView()
     private let relatedUnderlineView = UIView()
     private let availableGreenUnderlineView = UIView()
     private let separatelineView = UIView()
@@ -191,6 +191,8 @@ final class DetailViewController: UIViewController {
 
     
     //MARK: - Variables
+    var tagList = ["립밤", "핸드크림", "틴트", "쿠션", "마스크팩"]
+    
     var productList:[productModel] = [
         productModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000", discountRate:""),
         productModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500", discountRate: ""),
@@ -217,7 +219,7 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         layout()
         register()
-        //        configDelegate()
+        configDelegate()
         labelConfig()
         buttonConfig()
         tempConfig()
@@ -245,8 +247,8 @@ extension DetailViewController {
             tabbarButtonContainerView,
             productDetailContainerView,
             productDetailUnderlineView,
-            recommandContainerView,
-            recommandUnderlineView,
+            recommendContainerView,
+            recommendUnderlineView,
             relatedProductContainerView,
             relatedUnderlineView,
             bottomContainerView
@@ -267,7 +269,8 @@ extension DetailViewController {
             rateImageView,
             rateLabel,
             rateCountLabel,
-            productTypeLabel
+            productTypeLabel,
+            tagCollectionView
         )
         
         //deliveryContainerView
@@ -296,7 +299,6 @@ extension DetailViewController {
             separatelineView,
             stockLabel
         )
-        
         productDetailContainerView.addSubview(productImageView)
         
         // ContainerViews
@@ -358,8 +360,8 @@ extension DetailViewController {
 
         tabbarButtonContainerView.snp.makeConstraints {
             $0.top.equalTo(availableUnderlineView.snp.bottom)
-            $0.leading.trailing.equalTo(productContainerView)
-            $0.height.equalTo(65)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(66)
         }
 
         productDetailContainerView.snp.makeConstraints {
@@ -374,20 +376,20 @@ extension DetailViewController {
             $0.height.equalTo(7.5)
         }
 
-        recommandContainerView.snp.makeConstraints {
+        recommendContainerView.snp.makeConstraints {
             $0.top.equalTo(productDetailUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(269)
         }
 
-        recommandUnderlineView.snp.makeConstraints {
-            $0.top.equalTo(recommandContainerView.snp.bottom)
+        recommendUnderlineView.snp.makeConstraints {
+            $0.top.equalTo(recommendContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(7.5)
         }
 
         relatedProductContainerView.snp.makeConstraints {
-            $0.top.equalTo(recommandUnderlineView.snp.bottom)
+            $0.top.equalTo(recommendUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(257)
         }
@@ -475,6 +477,12 @@ extension DetailViewController {
         productTypeLabel.snp.makeConstraints {
             $0.top.equalTo(rateCountLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview()
+        }
+        
+        tagCollectionView.snp.makeConstraints {
+            $0.top.equalTo(productTypeLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(27)
         }
 
         //deliveryContainerView
@@ -585,6 +593,7 @@ extension DetailViewController {
         productImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
     }
     
     //MARK: - General Helpers
@@ -606,7 +615,7 @@ extension DetailViewController {
 //        availableStoreContainerView.backgroundColor = .systemYellow
 //        tabbarButtonContainerView.backgroundColor = .systemGreen
 //        productDetailContainerView.backgroundColor = .systemBlue
-        recommandContainerView.backgroundColor = .systemPurple
+        recommendContainerView.backgroundColor = .systemPurple
         relatedProductContainerView.backgroundColor = .systemCyan
         bottomContainerView.backgroundColor = .systemGray6
     }
@@ -641,22 +650,22 @@ extension DetailViewController {
         deliveryUnderlineView.backgroundColor = 0xebebeb.color
         availableUnderlineView.backgroundColor = 0xebebeb.color
         productDetailUnderlineView.backgroundColor = 0xebebeb.color
-        recommandUnderlineView.backgroundColor = 0xebebeb.color
+        recommendUnderlineView.backgroundColor = 0xebebeb.color
         relatedUnderlineView.backgroundColor = 0xebebeb.color
         availableGreenUnderlineView.backgroundColor = 0xa4d232.color
         separatelineView.backgroundColor = 0xebebeb.color
     }
     
-//    private func configDelegate() {
-//        tagCollectionView.delegate = self
-//        tagCollectionView.dataSource = self
+    private func configDelegate() {
+        tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
 //        productCollectionView.delegate = self
 //        productCollectionView.dataSource = self
-//    }
+    }
 
     private func register() {
         tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-        productCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+//        productCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
     }
     
 //MARK: - Action Helpers
@@ -664,32 +673,36 @@ extension DetailViewController {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-//extension DetailViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        <#code#>
-//    }
-//}
-//
-////MARK: - UICollectionViewDataSource
-//extension DetailViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//
-//}
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let tempLabel: UILabel = UILabel()
+        tempLabel.text = tagList[indexPath.item]
+        return CGSize(width: tempLabel.intrinsicContentSize.width, height: 27)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return tagLineSpacing
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return tagInterItemSpacing
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return tagInset
+    }
+}
+
+//MARK: - UICollectionViewDataSource
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tagList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else { return UICollectionViewCell() }
+        tagCell.dataBind(tag: tagList[indexPath.item])
+        return tagCell
+    }
+}
