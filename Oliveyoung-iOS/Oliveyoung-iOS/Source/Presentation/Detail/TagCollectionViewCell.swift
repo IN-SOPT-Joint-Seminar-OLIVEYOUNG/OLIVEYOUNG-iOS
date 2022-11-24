@@ -17,7 +17,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
     //MARK: - UI Components
     private let tagView = UIView().then {
         $0.backgroundColor = 0xa4d232.color
-        $0.cornerRadius = 0.5
+        $0.cornerRadius = 15
     }
     
     private let tagLabel = UILabel().then {

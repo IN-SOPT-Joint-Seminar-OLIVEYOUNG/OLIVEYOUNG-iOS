@@ -63,7 +63,10 @@ final class DetailViewController: UIViewController {
     private let productDetailContainerView = UIView()
     private let recommendContainerView = UIView()
     private let relatedProductContainerView = UIView()
-    private let bottomContainerView = UIView()
+    private let bottomContainerView = UIView().then {
+        $0.borderWidth = 1
+        $0.borderColor = 0xebebeb.color
+    }
     
     private let productUnderlineView = UIView()
     private let deliveryUnderlineView = UIView()
@@ -73,6 +76,7 @@ final class DetailViewController: UIViewController {
     private let relatedUnderlineView = UIView()
     private let availableGreenUnderlineView = UIView()
     private let separatelineView = UIView()
+    private let purchaseView = UIView()
     
     private let backButton = UIButton()
     private let searchButton = UIButton()
@@ -80,7 +84,10 @@ final class DetailViewController: UIViewController {
     private let brandButton = UIButton()
     private let infoButton = UIButton()
     private let overnightShippingButton = UIButton()
-    private let heartButton = UIButton()
+    private let likeButton = UIButton().then {
+        $0.isSelected
+    }
+    
     private let purchaseButton = UIButton()
     
     private let brandLabel = UILabel().then {
@@ -206,6 +213,11 @@ final class DetailViewController: UIViewController {
         $0.textColor = 0x2f2f2f.color
     }
     
+    private let purchaseLabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x2f2f2f.color
+    }
+    
     private let rateImageView = UIImageView(image: UIImage(named: "starRate"))
     private let singleStarImageView = UIImageView(image: UIImage(named: "star14X14"))
     private let productImageView = UIImageView(image: UIImage(named: "detailView"))
@@ -213,6 +225,8 @@ final class DetailViewController: UIViewController {
 
     
     //MARK: - Variables
+    var isSelected = true
+    
     var tagList = ["립밤", "핸드크림", "틴트", "쿠션", "마스크팩"]
     
     var recommendList:[recommendModel] = [
@@ -252,8 +266,9 @@ final class DetailViewController: UIViewController {
         configDelegate()
         labelConfig()
         buttonConfig()
-        tempConfig()
         viewConfig()
+        isLikeTapped()
+        tempConfig()
     }
 }
 
@@ -329,6 +344,7 @@ extension DetailViewController {
             separatelineView,
             stockLabel
         )
+        
         productDetailContainerView.addSubview(productImageView)
         
         recommendContainerView.addSubviews(
@@ -340,6 +356,10 @@ extension DetailViewController {
             relateLabel,
             relateCollectionView
         )
+        
+        bottomContainerView.addSubviews(likeButton, purchaseView, purchaseButton)
+        
+        purchaseView.addSubview(purchaseLabel)
         
         // ContainerViews
         topContainerView.snp.makeConstraints {
@@ -383,137 +403,137 @@ extension DetailViewController {
             $0.top.equalTo(deliveryContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(1)
-
+            
         }
-
+        
         availableStoreContainerView.snp.makeConstraints {
             $0.top.equalTo(deliveryUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(83)
         }
-
+        
         availableUnderlineView.snp.makeConstraints {
             $0.top.equalTo(availableStoreContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(7.5)
         }
-
+        
         tabbarButtonContainerView.snp.makeConstraints {
             $0.top.equalTo(availableUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(66)
         }
-
+        
         productDetailContainerView.snp.makeConstraints {
             $0.top.equalTo(tabbarButtonContainerView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(1685)
         }
-
+        
         productDetailUnderlineView.snp.makeConstraints {
             $0.top.equalTo(productDetailContainerView.snp.bottom).offset(16)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(7.5)
         }
-
+        
         recommendContainerView.snp.makeConstraints {
             $0.top.equalTo(productDetailUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(269)
         }
-
+        
         recommendUnderlineView.snp.makeConstraints {
             $0.top.equalTo(recommendContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(7.5)
         }
-
+        
         relatedProductContainerView.snp.makeConstraints {
             $0.top.equalTo(recommendUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(productContainerView)
             $0.height.equalTo(257)
         }
-
+        
         bottomContainerView.snp.makeConstraints {
-            $0.top.equalTo(relatedProductContainerView.snp.bottom)
-            $0.leading.trailing.equalTo(productContainerView)
+            $0.top.equalTo(relatedProductContainerView.snp.bottom).offset(31.7)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(1)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-1)
             $0.height.equalTo(108)
             $0.bottom.equalToSuperview()
         }
         
-//         TopContainerView
+        //         TopContainerView
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(18.5)
             $0.width.height.equalTo(18)
         }
-
+        
         cartButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-18.5)
             $0.width.height.equalTo(22)
         }
-
+        
         searchButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalTo(cartButton.snp.leading).offset(-28)
             $0.width.height.equalTo(22)
         }
-
+        
         //ProductContainerView
         brandLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-302)
         }
-
+        
         brandButton.snp.makeConstraints {
             $0.top.equalTo(brandLabel)
             $0.leading.equalTo(brandLabel.snp.trailing).offset(3)
             $0.width.height.equalTo(12)
         }
-
+        
         productLabel.snp.makeConstraints {
             $0.top.equalTo(brandLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
-
+        
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(productLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview()
         }
-
+        
         wonLabel.snp.makeConstraints {
             $0.bottom.equalTo(priceLabel).offset(-1.5)
             $0.leading.equalTo(priceLabel.snp.trailing).offset(4)
         }
-
+        
         originalPriceLabel.snp.makeConstraints {
             $0.bottom.equalTo(priceLabel)
             $0.leading.equalTo(wonLabel.snp.trailing).offset(15)
         }
-
+        
         discountLabel.snp.makeConstraints {
             $0.bottom.equalTo(priceLabel)
             $0.trailing.equalToSuperview()
         }
-
+        
         rateImageView.snp.makeConstraints {
             $0.top.equalTo(priceLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview()
             $0.width.equalTo(84)
             $0.height.equalTo(15)
         }
-
+        
         rateLabel.snp.makeConstraints {
             $0.bottom.equalTo(rateImageView)
             $0.leading.equalTo(rateImageView.snp.trailing).offset(8)
         }
-
+        
         rateCountLabel.snp.makeConstraints {
             $0.top.equalTo(rateImageView.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
         }
-
+        
         productTypeLabel.snp.makeConstraints {
             $0.top.equalTo(rateCountLabel.snp.bottom).offset(28)
             $0.leading.equalToSuperview()
@@ -524,107 +544,107 @@ extension DetailViewController {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(27)
         }
-
+        
         //deliveryContainerView
-
+        
         normalShippingLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview()
         }
-
+        
         shippingPriceLabel.snp.makeConstraints {
             $0.centerY.equalTo(normalShippingLabel)
             $0.leading.equalTo(normalShippingLabel.snp.trailing).offset(46)
         }
-
+        
         freeShippingLabel.snp.makeConstraints {
             $0.centerY.equalTo(normalShippingLabel)
             $0.leading.equalTo(shippingPriceLabel.snp.trailing).offset(4)
         }
-
+        
         overnightShippingLabel.snp.makeConstraints {
             $0.top.equalTo(normalShippingLabel.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
         }
-
+        
         infoButton.snp.makeConstraints {
             $0.centerY.equalTo(overnightShippingLabel)
             $0.leading.equalTo(overnightShippingLabel.snp.trailing).offset(4)
             $0.width.height.equalTo(10)
         }
-
+        
         overnightPriceLabel.snp.makeConstraints {
             $0.centerY.equalTo(overnightShippingLabel)
             $0.leading.equalTo(infoButton.snp.trailing).offset(32)
         }
-
+        
         overnightShippingButton.snp.makeConstraints {
             $0.centerY.equalTo(overnightShippingLabel)
             $0.leading.equalTo(overnightPriceLabel.snp.trailing).offset(9)
             $0.width.height.equalTo(10)
         }
-
+        
         minuteLabel.snp.makeConstraints {
             $0.top.equalTo(overnightPriceLabel.snp.bottom).offset(8)
             $0.leading.equalTo(overnightPriceLabel)
         }
-
+        
         firstOvernightLabel.snp.makeConstraints {
             $0.centerY.equalTo(minuteLabel)
             $0.leading.equalTo(minuteLabel.snp.trailing)
         }
-
+        
         hourLablel.snp.makeConstraints {
             $0.centerY.equalTo(minuteLabel)
             $0.leading.equalTo(firstOvernightLabel.snp.trailing)
         }
-
+        
         secondOvernightLabel.snp.makeConstraints {
             $0.centerY.equalTo(minuteLabel)
             $0.leading.equalTo(hourLablel.snp.trailing)
         }
-
+        
         //availableStoreContainerView
         checkAvailableStoreLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview()
         }
-
+        
         searchGreenImageView.snp.makeConstraints {
             $0.centerY.equalTo(checkAvailableStoreLabel)
             $0.leading.equalTo(checkAvailableStoreLabel.snp.trailing).offset(4)
             $0.width.height.equalTo(12)
         }
-
+        
         availableGreenUnderlineView.snp.makeConstraints {
             $0.top.equalTo(checkAvailableStoreLabel.snp.bottom).offset(3)
             $0.leading.equalTo(checkAvailableStoreLabel)
             $0.trailing.equalTo(searchGreenImageView)
             $0.height.equalTo(1)
         }
-
+        
         singleStarImageView.snp.makeConstraints {
             $0.top.equalTo(checkAvailableStoreLabel.snp.bottom).offset(17.5)
             $0.leading.equalToSuperview()
             $0.width.height.equalTo(11)
         }
-
+        
         availableStoreLabel.snp.makeConstraints {
             $0.centerY.equalTo(singleStarImageView)
             $0.leading.equalTo(singleStarImageView.snp.trailing).offset(4)
         }
-
+        
         storeStatusLabel.snp.makeConstraints {
             $0.centerY.equalTo(singleStarImageView)
             $0.trailing.equalTo(separatelineView.snp.leading).offset(-4)
         }
-
+        
         separatelineView.snp.makeConstraints {
             $0.top.bottom.equalTo(singleStarImageView)
             $0.trailing.equalTo(stockLabel.snp.leading).offset(-4)
             $0.width.equalTo(1.2)
         }
-
+        
         stockLabel.snp.makeConstraints {
             $0.centerY.equalTo(singleStarImageView)
             $0.trailing.equalToSuperview()
@@ -657,6 +677,29 @@ extension DetailViewController {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(192)
         }
+        
+        //bottomContainerView
+        likeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(35)
+            $0.leading.equalToSuperview().offset(18.5)
+            $0.width.height.equalTo(24)
+        }
+        
+        purchaseView.snp.makeConstraints {
+            $0.centerY.equalTo(likeButton)
+            $0.leading.equalTo(likeButton.snp.trailing).offset(35)
+            $0.trailing.equalToSuperview().offset(-18.5)
+            $0.height.equalTo(48)
+        }
+        
+        purchaseLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        purchaseButton.snp.makeConstraints {
+            $0.edges.equalTo(purchaseView)
+        }
+        
     }
     
     //MARK: - General Helpers
@@ -667,20 +710,6 @@ extension DetailViewController {
         brandButton.setImage(UIImage(named: "chevron12X12"), for: .normal)
         infoButton.setImage(UIImage(named: "info"), for: .normal)
         overnightShippingButton.setImage(UIImage(named: "check"), for: .normal)
-        //        heartButton.setImage(UIImage(named: ""), for: .normal)
-        purchaseButton.setTitle("구매하기", for: .normal)
-    }
-    
-    private func tempConfig() {
-        productImageContainerView.backgroundColor = .systemGray4
-//        productContainerView.backgroundColor = .red
-//        deliveryContainerView.backgroundColor = .systemOrange
-//        availableStoreContainerView.backgroundColor = .systemYellow
-//        tabbarButtonContainerView.backgroundColor = .systemGreen
-//        productDetailContainerView.backgroundColor = .systemBlue
-//        recommendContainerView.backgroundColor = .systemPurple
-//        relatedProductContainerView.backgroundColor = .systemCyan
-        bottomContainerView.backgroundColor = .systemGray6
     }
     
     private func labelConfig() {
@@ -708,6 +737,7 @@ extension DetailViewController {
         self.stockLabel.text = "재고보유 가능성 높음"
         self.relateLabel.text = "이 상품은 어떠세요?"
         self.recommendLabel.text = "방금 본 것과 유사한 상품이에요"
+        self.purchaseLabel.text = "구매하기"
     }
     
     private func viewConfig() {
@@ -719,6 +749,7 @@ extension DetailViewController {
         relatedUnderlineView.backgroundColor = 0xebebeb.color
         availableGreenUnderlineView.backgroundColor = 0xa4d232.color
         separatelineView.backgroundColor = 0xebebeb.color
+        purchaseView.backgroundColor = 0xa4d232.color
     }
     
     private func configDelegate() {
@@ -729,15 +760,35 @@ extension DetailViewController {
         relateCollectionView.delegate = self
         relateCollectionView.dataSource = self
     }
-
+    
     private func register() {
         tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         recommendCollectionView.register(recommendCollectionViewCell.self, forCellWithReuseIdentifier: recommendCollectionViewCell.identifier)
         relateCollectionView.register(relateCollectionViewCell.self, forCellWithReuseIdentifier: relateCollectionViewCell.identifier)
     }
     
-//MARK: - Action Helpers
-
+    private func tempConfig() {
+        productImageContainerView.backgroundColor = .systemGray4
+        //        productContainerView.backgroundColor = .red
+        //        deliveryContainerView.backgroundColor = .systemOrange
+        //        availableStoreContainerView.backgroundColor = .systemYellow
+        //        tabbarButtonContainerView.backgroundColor = .systemGreen
+        //        productDetailContainerView.backgroundColor = .systemBlue
+        //        recommendContainerView.backgroundColor = .systemPurple
+        //        relatedProductContainerView.backgroundColor = .systemCyan
+        //        bottomContainerView.backgroundColor = .systemGray6
+    }
+    
+    //MARK: - Action Helpers
+    private func isLikeTapped() {
+        if  likeButton.isSelected == true {
+            isSelected = false
+            likeButton.setImage(UIImage(named: "property1LikeFill24X24"), for: .normal )
+        } else {
+            isSelected = true
+            likeButton.setImage(UIImage(named: "property1Like24X24"), for: .normal)
+        }
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

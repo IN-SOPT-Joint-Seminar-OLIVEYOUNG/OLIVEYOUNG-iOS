@@ -16,7 +16,11 @@ final class recommendCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    private let productImageView = UIImageView()
+    private let productImageView = UIImageView().then {
+        $0.cornerRadius = 10
+        $0.backgroundColor = .systemGray6
+    }
+    
     private let productLabel = UILabel().then {
         $0.font = .bodyBody2
         $0.textColor = 0x2f2f2f.color
@@ -29,7 +33,7 @@ final class recommendCollectionViewCell: UICollectionViewCell {
         $0.numberOfLines = 0
     }
     private let priceLabel = UILabel().then {
-        $0.font = .bodyCaption2
+        $0.font = .bodyBody2
         $0.textColor = 0x2f2f2f.color
         $0.numberOfLines = 0
     }
