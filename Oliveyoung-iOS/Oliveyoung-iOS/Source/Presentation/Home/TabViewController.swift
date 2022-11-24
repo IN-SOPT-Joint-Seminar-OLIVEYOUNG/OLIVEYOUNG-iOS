@@ -9,9 +9,7 @@ import UIKit
 
 class TabViewController: UIViewController {
     private lazy var tabCollectionView: UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +17,6 @@ class TabViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         return collectionView
     }()
     
@@ -58,7 +55,6 @@ extension TabViewController {
         tabCollectionView.register(TabCollectionViewCell.self, forCellWithReuseIdentifier:
                                     TabCollectionViewCell.identifier)
     }
-   
 }
 
 extension TabViewController: UICollectionViewDelegateFlowLayout {
@@ -87,7 +83,6 @@ extension TabViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabList.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let Cell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCollectionViewCell.identifier, for: indexPath)
                 as? TabCollectionViewCell else {return UICollectionViewCell() }

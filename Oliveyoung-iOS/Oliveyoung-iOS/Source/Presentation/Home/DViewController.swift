@@ -11,7 +11,6 @@ class DViewController: UIViewController {
     private lazy var dCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +18,6 @@ class DViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         return collectionView
     }()
     
@@ -62,7 +60,6 @@ extension DViewController {
         dCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
                                     ReccomendCollectionViewCell.identifier)
     }
-   
 }
 
 extension DViewController: UICollectionViewDelegateFlowLayout {

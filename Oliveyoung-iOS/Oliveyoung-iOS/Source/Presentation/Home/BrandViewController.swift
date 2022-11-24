@@ -11,7 +11,7 @@ class BrandViewController: UIViewController {
     private lazy var brandCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +19,6 @@ class BrandViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         return collectionView
     }()
     
@@ -52,7 +51,6 @@ class BrandViewController: UIViewController {
 //MARK: - Extensions
 
 extension BrandViewController {
-    
     private func layout() {
         view.backgroundColor = .white
         view.addSubview(brandCollectionView)
@@ -65,7 +63,6 @@ extension BrandViewController {
         brandCollectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier:
                                     BrandCollectionViewCell.identifier)
     }
-   
 }
 
 extension BrandViewController: UICollectionViewDelegateFlowLayout {

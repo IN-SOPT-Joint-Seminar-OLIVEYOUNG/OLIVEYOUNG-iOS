@@ -11,7 +11,6 @@ class RecommendViewController: UIViewController {
     private lazy var recommendCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +18,6 @@ class RecommendViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         return collectionView
     }()
     
@@ -62,7 +60,6 @@ extension RecommendViewController {
         recommendCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
                                     ReccomendCollectionViewCell.identifier)
     }
-   
 }
 
 extension RecommendViewController: UICollectionViewDelegateFlowLayout {

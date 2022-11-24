@@ -13,21 +13,15 @@ final class PracticeViewController: UIViewController {
     
 
     private lazy var menuCollectionView: UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
-        collectionView.dataSource = self
-        
         return collectionView
     }()
-    
-    
     //MARK: - Variables
     var menuList: [MenuModel] = [
         MenuModel(menuImage: "Rectangle 29", name: "카테고리"),
@@ -42,27 +36,21 @@ final class PracticeViewController: UIViewController {
         MenuModel(menuImage: "col9", name: "라이프/홈")
         
     ]
-    
+
     final let menuInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
     final let menuInterItemSpacing : CGFloat = 1
     final let menuLineSpacing : CGFloat = 16
     final let menuCellHeight : CGFloat = 75
-
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         register()
     }
 }
-
-
 //MARK: - Extensions
 
 extension PracticeViewController {
-    
     private func layout() {
         view.backgroundColor = .white
         view.addSubview(menuCollectionView)
@@ -74,7 +62,6 @@ extension PracticeViewController {
     private func register() {
         menuCollectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
     }
-   
 }
 
 extension PracticeViewController: UICollectionViewDelegateFlowLayout {
