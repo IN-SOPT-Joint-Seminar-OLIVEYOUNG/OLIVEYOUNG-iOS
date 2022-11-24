@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 import Then
 import SnapKit
@@ -931,5 +932,11 @@ extension DetailViewController: UICollectionViewDataSource {
             relateCell.dataBind(model: relateList[indexPath.item])
             return relateCell
         }
+    }
+}
+
+struct DetailViewControllerPreView:PreviewProvider {
+    static var previews: some View {
+        DetailViewController().toPreview()
     }
 }

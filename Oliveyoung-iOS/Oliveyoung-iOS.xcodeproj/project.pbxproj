@@ -468,6 +468,7 @@
 		DDC28C8D29232F37003B87BB /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				37CB1C47292E730D00C94725 /* EmptyViewController.swift */,
 				DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */,
 			);
 			path = SearchResult;
@@ -481,7 +482,6 @@
 				37E0023229262A1A00283615 /* TagCollectionViewCell.swift */,
 				3709E086292A394300222F3E /* ProductModel.swift */,
 				DD0FC2952924C38500ACF342 /* DetailViewController.swift */,
-				37CB1C47292E730D00C94725 /* EmptyViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
