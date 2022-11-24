@@ -88,7 +88,7 @@ final class DetailViewController: UIViewController {
     private let infoButton = UIButton()
     private let overnightShippingButton = UIButton()
     private let likeButton = UIButton().then {
-        $0.isSelected
+        $0.isSelected = true
     }
     
     private let purchaseButton = UIButton()
