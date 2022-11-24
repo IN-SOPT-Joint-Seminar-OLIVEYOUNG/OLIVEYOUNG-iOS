@@ -124,8 +124,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//struct ViewControllerPreView:PreviewProvider {
-//    static var previews: some View {
-//        SearchViewController().toPreview()
-//    }
-//}
+struct SearchViewControllerPreView:PreviewProvider {
+    static var previews: some View {
+        SearchViewController().toPreview()
+    }
+}

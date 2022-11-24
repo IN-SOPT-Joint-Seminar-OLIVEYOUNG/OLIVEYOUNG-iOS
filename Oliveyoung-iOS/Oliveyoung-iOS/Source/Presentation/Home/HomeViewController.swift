@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 import Then
 import SnapKit
@@ -41,15 +42,10 @@ final class HomeViewController: UIViewController {
         
         return tabcollectionView
     }()
-    
   
-    
-    
     private let adImageView = UIImageView().then {
         $0.image = UIImage(named: "Rectangle 52")
     }
-    
-    
     // MARK: - Reusable Components
     
     private lazy var menuCollectionView: UICollectionView = {
@@ -89,35 +85,20 @@ final class HomeViewController: UIViewController {
     final let menuInterItemSpacing : CGFloat = 1
     final let menuLineSpacing : CGFloat = 16
     final let menuCellHeight : CGFloat = 75
-    
-    
-
     final let tabInset : UIEdgeInsets = UIEdgeInsets(top:24 , left:15 , bottom: 12, right: 15)
     final let tabInterItemSpacing : CGFloat = 10
     final let tabLineSpacing : CGFloat = 3
     final let tabCellHeight : CGFloat = 17
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private let recommendViewTitle = UILabel().then {
         $0.text = "김채령님을 위한 추천 상품!"
-        $0.font = .systemFont(ofSize: 18,weight:.bold)
+        $0.font = .tittleHeadline
         $0.textColor = .black
         
     }
     
     private let moreLabel = UILabel().then {
         $0.text = "더보기 >"
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .bodyBody1
         $0.textColor = .black
     }
     
@@ -126,13 +107,13 @@ final class HomeViewController: UIViewController {
     
     private let brandRecommendViewTitle = UILabel().then {
         $0.text = "이 브랜드 어떠세요?"
-        $0.font = .systemFont(ofSize: 18,weight:.bold)
+        $0.font = .tittleHeadline
         $0.textColor = .black
     }
     
     private let moreLabel2 = UILabel().then {
         $0.text = "더보기 >"
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .bodyBody1
         $0.textColor = .black
     }
     
@@ -142,13 +123,13 @@ final class HomeViewController: UIViewController {
     
     private let onlyViewTitle = UILabel().then {
         $0.text = "오직 올리브영에서만"
-        $0.font = .systemFont(ofSize: 18,weight:.bold)
+        $0.font = .tittleHeadline
         $0.textColor = .black
     }
     
     private let moreLabel3 = UILabel().then {
         $0.text = "더보기 >"
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .bodyBody1
         $0.textColor = .black
     }
     
@@ -166,13 +147,13 @@ final class HomeViewController: UIViewController {
     
     private let keyWordTitle = UILabel().then {
         $0.text = "이 달의 키워드 스토리"
-        $0.font = .systemFont(ofSize: 18,weight:.bold)
+        $0.font = .tittleHeadline
         $0.textColor = .black
     }
     
     private let moreLabel4 = UILabel().then {
         $0.text = "더보기 >"
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .bodyBody1
         $0.textColor = .black
     }
     private let adImageView4 = UIImageView().then {
@@ -276,7 +257,7 @@ extension HomeViewController {
         
         recommendViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.menuCollectionView.snp.bottom).offset(48)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(15)
 
         }
         
@@ -289,12 +270,13 @@ extension HomeViewController {
         
         recommendView.snp.makeConstraints {make in
             make.top.equalTo(self.recommendViewTitle.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(192)
         }
         
         brandRecommendViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.recommendView.snp.bottom).offset(48)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(19)
         }
         
@@ -308,20 +290,21 @@ extension HomeViewController {
         
         brandRecommendView.snp.makeConstraints {make in
             make.top.equalTo(self.brandRecommendViewTitle.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(76)
 
         }
         
         brandDetailView.snp.makeConstraints {make in
             make.top.equalTo(self.brandRecommendView.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(192)
 
         }
         
         onlyViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.brandDetailView.snp.bottom).offset(48)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(15)
             make.height.equalTo(19)
         }
         
@@ -333,24 +316,25 @@ extension HomeViewController {
         
         adImageView1.snp.makeConstraints{make in
             make.top.equalTo(self.onlyViewTitle.snp.bottom).offset(1)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(78)
         }
         
         adImageView2.snp.makeConstraints{make in
             make.top.equalTo(self.adImageView1.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(78)
         }
         
         adImageView3.snp.makeConstraints{make in
             make.top.equalTo(self.adImageView2.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(78)
         }
         
         keyWordTitle.snp.makeConstraints {make in
             make.top.equalTo(self.adImageView3.snp.bottom).offset(48)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(15)
             make.height.equalTo(19)
         }
         
@@ -363,13 +347,13 @@ extension HomeViewController {
         
         adImageView4.snp.makeConstraints{make in
             make.top.equalTo(self.keyWordTitle.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(78)
         }
         
         adImageView5.snp.makeConstraints{make in
             make.top.equalTo(self.adImageView4.snp.bottom).offset(12)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(78)
         }
 
@@ -507,5 +491,10 @@ extension HomeViewController: UICollectionViewDataSource {
             
         }
     }
-    
+}
+
+struct HomeViewControllerPreView:PreviewProvider {
+    static var previews: some View {
+        SearchViewController().toPreview()
+    }
 }

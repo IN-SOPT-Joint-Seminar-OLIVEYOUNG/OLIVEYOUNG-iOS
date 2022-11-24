@@ -14,18 +14,18 @@ class BrandDetailCollectionViewCell: UICollectionViewCell {
     private let ContainerView = UIView()
     private let ImageView = UIImageView()
     private let brandLabel = UILabel().then{
-        $0.font = .systemFont(ofSize: 7, weight: .bold)
+        $0.font = .bodyBody2
     }
     private let nameLabel = UILabel().then{
-        $0.font = .systemFont(ofSize: 7, weight: .light)
+        $0.font = .bodyCaption
         $0.textAlignment = .left
         $0.numberOfLines = 0
     }
     private let price = UILabel().then{
-        $0.font = .systemFont(ofSize: 7, weight: .bold)
+        $0.font = .bodyBody2
     }
     private let percent = UILabel().then{
-        $0.font = .systemFont(ofSize: 7, weight: .bold)
+        $0.font = .bodyBody2
         $0.textColor = .red
     }
     

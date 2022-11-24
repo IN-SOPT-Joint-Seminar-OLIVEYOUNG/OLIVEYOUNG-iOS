@@ -14,7 +14,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     private let menuContainerView = UIView()
     private let menuImageView = UIImageView()
     private let menuLabel = UILabel().then{
-        $0.font = .systemFont(ofSize: 12, weight: .light)
+        $0.font = .bodyBody1
     }
     
 //MARK: - Life Cycle

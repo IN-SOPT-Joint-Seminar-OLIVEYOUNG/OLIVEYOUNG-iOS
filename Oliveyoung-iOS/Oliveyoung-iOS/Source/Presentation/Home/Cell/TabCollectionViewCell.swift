@@ -14,7 +14,7 @@ class TabCollectionViewCell: UICollectionViewCell {
     private let ContainerView = UIView()
     
     private let tabLabel = UILabel().then{
-        $0.font = .systemFont(ofSize: 15, weight: .bold)
+        $0.font = .tittleSubhead1
         $0.textColor = .systemGray2
     }
     

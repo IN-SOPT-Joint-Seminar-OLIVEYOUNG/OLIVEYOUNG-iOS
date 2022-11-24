@@ -13,7 +13,7 @@ class BrandCollectionViewCell: UICollectionViewCell {
     private let brandContainerView = UIView()
     private let brandImageView = UIImageView()
     private let brandLabel = UILabel().then{
-        $0.font = .systemFont(ofSize: 12, weight: .bold)
+        $0.font = .bodyBody2
     }
     
 //MARK: - Life Cycle
