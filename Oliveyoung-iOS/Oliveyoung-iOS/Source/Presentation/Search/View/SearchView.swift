@@ -45,7 +45,7 @@ final class SearchView: BaseView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom)
+            $0.top.equalTo(navigationView.snp.bottom).offset(40)
             $0.leading.trailing.equalTo(safeAreaInsets).inset(15)
             $0.bottom.equalTo(safeAreaInsets)
         }

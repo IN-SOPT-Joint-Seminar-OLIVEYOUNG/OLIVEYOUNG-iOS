@@ -41,6 +41,7 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
     private func setUI() {
         contentView.addSubview(searchWordLabel)
         contentView.makeColorRounded(12, 1, .willaGrayGray150)
+        contentView.backgroundColor = .willaGrayGray150
     }
     
     private func setLayout() {
@@ -48,7 +49,6 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
         
         searchWordLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-//            $0.leading.trailing.equalToSuperview().offset(10)
             $0.height.equalTo(24)
         }
     }

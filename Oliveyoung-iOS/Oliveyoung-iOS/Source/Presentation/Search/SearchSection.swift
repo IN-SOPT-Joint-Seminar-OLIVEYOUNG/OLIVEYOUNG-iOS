@@ -10,13 +10,13 @@ import Foundation
 enum SearchSection: Int, Equatable {
     case recent
     case popular
-    case item
+//    case item
 
     init(index: Int) {
         switch index {
         case 0: self = .recent
-        case 1: self = .popular
-        default: self = .item
+        default: self = .popular
+//        default: self = .item
         }
     }
 
@@ -26,8 +26,8 @@ enum SearchSection: Int, Equatable {
             return "최근검색어"
         case .popular:
             return "인기검색어"
-        case .item:
-            return "최근 본 상품"
+//        case .item:
+//            return "최근 본 상품"
         }
     }
 }

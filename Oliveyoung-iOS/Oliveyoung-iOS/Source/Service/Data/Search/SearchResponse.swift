@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ResentWords: Codable {
-    let recentWords: [Word]
-}
+//struct ResentWords: Codable {
+//    let recentWords: [Word]
+//}
 
-struct Word: Codable {
+struct Word {
     let word: String
 }
 

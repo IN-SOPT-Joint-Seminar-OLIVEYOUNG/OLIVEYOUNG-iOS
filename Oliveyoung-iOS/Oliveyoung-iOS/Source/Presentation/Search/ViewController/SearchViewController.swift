@@ -45,7 +45,7 @@ extension SearchViewController: UICollectionViewDelegate {}
 extension SearchViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -54,10 +54,10 @@ extension SearchViewController: UICollectionViewDataSource {
             
         case 0:
             return recentWordDummy.count
-        case 1:
-            return popularWordDummy.count
         default:
-            return 1
+            return popularWordDummy.count
+//        default:
+//            return 1
         }
     }
     
@@ -70,21 +70,20 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.configureUI(word: recentWordDummy[indexPath.row])
             
             return cell
-        case 1:
+        default:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PopularWordCollectionViewCell, for: indexPath) as? PopularWordCollectionViewCell else { return UICollectionViewCell() }
             
             cell.configureUI(word: popularWordDummy[indexPath.row])
             
             return cell
-        default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-            
-            return cell
+//        default:
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+//
+//            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
- 
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: SearchSectionView.identifier,
@@ -94,6 +93,15 @@ extension SearchViewController: UICollectionViewDataSource {
         headerView.setTitle(text: SearchSection(index: indexPath.section).headerTitle)
         
         return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch section {
+        case 0:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+        default:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
 }
 
@@ -107,19 +115,17 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         switch indexPath.section {
         case 0:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 300)
-        case 1:
-            return CGSize(width: authorDummy[indexPath.item].name.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 16, height: 28)
-        case 2:
-            return CGSize(width: actorDummy[indexPath.item].name.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 16, height: 28)
+            return CGSize(width: recentWordDummy[indexPath.item].word.size(withAttributes: [NSAttributedString.Key.font: UIFont.bodyBody5]).width + 20, height: 24)
         default:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 95)
+            return CGSize(width: popularWordDummy[indexPath.item].word.size(withAttributes: [NSAttributedString.Key.font: UIFont.bodyBody5]).width + 20, height: 24)
+//        default:
+//            return CGSize(width: UIScreen.main.bounds.width - 40, height: 95)
         }
     }
 }
 
-//struct ViewControllerPreView:PreviewProvider {
-//    static var previews: some View {
-//        SearchViewController().toPreview()
-//    }
-//}
+struct ViewControllerPreView:PreviewProvider {
+    static var previews: some View {
+        SearchViewController().toPreview()
+    }
+}

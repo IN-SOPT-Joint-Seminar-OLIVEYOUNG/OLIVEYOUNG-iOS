@@ -37,7 +37,8 @@ final class SearchSectionView: UICollectionReusableView {
     private func setupConstraints() {
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.height.equalTo(17)
+            $0.top.equalToSuperview()
+            $0.height.equalTo(33)
         }
     }
 

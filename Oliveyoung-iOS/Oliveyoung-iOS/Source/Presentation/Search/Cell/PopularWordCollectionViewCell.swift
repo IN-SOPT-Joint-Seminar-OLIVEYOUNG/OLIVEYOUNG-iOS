@@ -13,7 +13,6 @@ class PopularWordCollectionViewCell: UICollectionViewCell {
         $0.font = .bodyBody5
         $0.textColor = .willaGrayGray500
         $0.textAlignment = .center
-        $0.backgroundColor = .willa
     }
     
     // MARK: - Life Cycles
@@ -49,7 +48,6 @@ class PopularWordCollectionViewCell: UICollectionViewCell {
         
         searchWordLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-//            $0.leading.trailing.equalToSuperview().offset(10)
             $0.height.equalTo(24)
         }
     }
