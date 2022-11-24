@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA811E2F292F79590006E275 /* homeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA811E2E292F79590006E275 /* homeViewController2.swift */; };
 		DA9C661B2929492C00B28678 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C661A2929492C00B28678 /* MenuModel.swift */; };
 		DA9C661E29294CD300B28678 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C661D29294CD300B28678 /* MenuCollectionViewCell.swift */; };
 		DA9C6631292BFDAD00B28678 /* ReccomendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6630292BFDAD00B28678 /* ReccomendCollectionViewCell.swift */; };
@@ -81,7 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA811E2E292F79590006E275 /* homeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController2.swift; sourceTree = "<group>"; };
 		DA9C661A2929492C00B28678 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		DA9C661D29294CD300B28678 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA9C6630292BFDAD00B28678 /* ReccomendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReccomendCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 				DA9C6640292D39D900B28678 /* BrandViewController.swift */,
 				DA9C6642292D39E600B28678 /* DViewController.swift */,
 				DA9C6648292E86F600B28678 /* TabViewController.swift */,
-				DA811E2E292F79590006E275 /* homeViewController2.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -640,7 +637,6 @@
 				DD20A8D2292F396800001411 /* PopularWordCollectionViewCell.swift in Sources */,
 				DD20A8D0292F396000001411 /* RecentWordCollectionViewCell.swift in Sources */,
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
-				DA811E2F292F79590006E275 /* homeViewController2.swift in Sources */,
 				DD20A8CC292F1C5C00001411 /* SearchSectionView.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
