@@ -24,22 +24,21 @@ final class HomeViewController: UIViewController {
         private let shoppingbagButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "shopping bag_22x22"), for: .normal)
         }
-    private lazy var tabCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let tabcollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        tabcollectionView.backgroundColor = .clear
-        tabcollectionView.translatesAutoresizingMaskIntoConstraints = false
-        tabcollectionView.isScrollEnabled = false
-        tabcollectionView.showsVerticalScrollIndicator = false
-        tabcollectionView.delegate = self
-        tabcollectionView.dataSource = self
-        return tabcollectionView
-    }()
   
     private let adImageView = UIImageView().then {
         $0.image = UIImage(named: "Rectangle 52")
     }
+    
     // MARK: - Reusable Components
+    private lazy var tabCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
     
     private lazy var menuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -48,10 +47,24 @@ final class HomeViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         return collectionView
     }()
+    private let recommendView = UIView()
+//    private lazy var recommendCollectionView: UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+////        collectionView.backgroundColor = .clear
+////        collectionView.translatesAutoresizingMaskIntoConstraints = false
+////        collectionView.isScrollEnabled = false
+////        collectionView.showsVerticalScrollIndicator = false
+//
+//        return collectionView
+//    }()
+//
+    
+    
     //MARK: - Variables
     var menuList: [MenuModel] = [
         MenuModel(menuImage: "Rectangle 29", name: "카테고리"),
@@ -67,15 +80,26 @@ final class HomeViewController: UIViewController {
     ]
     var tabList: [TabModel] = [
         TabModel(Name: "추천"),TabModel(Name: "특가"),TabModel(Name: "랭킹"),TabModel(Name: "이벤트"),TabModel(Name: "세일") ]
+//    var recommendList: [RecommendModel] = [
+//        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+//        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+//        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+//
+//       ]
     // MARK: - Constants
     final let menuInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
     final let menuInterItemSpacing : CGFloat = 1
     final let menuLineSpacing : CGFloat = 16
     final let menuCellHeight : CGFloat = 75
-    final let tabInset : UIEdgeInsets = UIEdgeInsets(top:24 , left:15 , bottom: 12, right: 15)
+    final let tabInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
     final let tabInterItemSpacing : CGFloat = 10
     final let tabLineSpacing : CGFloat = 3
     final let tabCellHeight : CGFloat = 17
+//    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+//    final let recInterItemSpacing : CGFloat = 15
+//    final let recLineSpacing : CGFloat = 16
+//    final let recCellHeight : CGFloat = 192
+//
     private let recommendViewTitle = UILabel().then {
         $0.text = "김채령님을 위한 추천 상품!"
         $0.font = .tittleHeadline
@@ -86,7 +110,7 @@ final class HomeViewController: UIViewController {
         $0.font = .bodyBody1
         $0.textColor = .black
     }
-    private let recommendView = UIView()
+   
     private let brandRecommendViewTitle = UILabel().then {
         $0.text = "이 브랜드 어떠세요?"
         $0.font = .tittleHeadline
@@ -148,6 +172,7 @@ final class HomeViewController: UIViewController {
         layout()
         config()
         register()
+        configDelegate()
     }
 }
 
@@ -172,20 +197,23 @@ extension HomeViewController {
         }
         logoButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
             make.height.width.equalTo(28)
         }
         searchButton.snp.makeConstraints { make in
             make.height.width.equalTo(22)
+            make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(74)
         }
         shoppingbagButton.snp.makeConstraints { make in
             make.height.width.equalTo(22)
+            make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(24)
         }
         tabCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.titleView.snp.bottom).offset(24)
-                        make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-                        make.height.equalTo(17)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.height.equalTo(29)
         }
         adImageView.snp.makeConstraints{make in
             make.top.equalTo(self.tabCollectionView.snp.bottom).offset(13)
@@ -288,17 +316,31 @@ extension HomeViewController {
             make.bottom.equalToSuperview().offset(-1)
         }
     }
+    
     private func register() {
         menuCollectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
         tabCollectionView.register(TabCollectionViewCell.self, forCellWithReuseIdentifier:
                                     TabCollectionViewCell.identifier)
+//        recommendCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
+//                                    ReccomendCollectionViewCell.identifier)
+        
     }
+    
+    private func configDelegate() {
+        menuCollectionView.delegate = self
+        menuCollectionView.dataSource = self
+        tabCollectionView.delegate = self
+        tabCollectionView.dataSource = self
+//        recommendCollectionView.delegate = self
+//        recommendCollectionView.dataSource = self
+    }
+    
     // MARK: - General Helpers
     private func config() {
         view.backgroundColor = .white
         adImageView.backgroundColor = .green
-        tabCollectionView.backgroundColor = .systemGray4
-        recommendView.backgroundColor = .green
+//        tabCollectionView.backgroundColor = .red
+//        recommendView.backgroundColor = .green
         brandRecommendView.backgroundColor = .systemBlue
         brandDetailView.backgroundColor = .purple
     }
@@ -315,9 +357,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         case tabCollectionView:
             let screenWidth = UIScreen.main.bounds.width
             let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
-            return CGSize(width: tabdoubleCellWidth / 6, height: 17)
+            return CGSize(width: tabdoubleCellWidth / 6, height: 29)
+//        case recommendCollectionView:
+//            let screenWidth = UIScreen.main.bounds.width
+//            let doubleCellWidth = screenWidth - recInset.left - recInset.right - recInterItemSpacing
+//            return CGSize(width: doubleCellWidth / 4, height: 192)
         default:
-            return CGSize.zero
+            let screenWidth = UIScreen.main.bounds.width
+            let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
+            return CGSize(width: tabdoubleCellWidth / 6, height: 17)
         }
     }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -326,8 +374,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuLineSpacing
             case tabCollectionView:
                 return tabLineSpacing
+//            case recommendCollectionView:
+//                return recLineSpacing
             default:
-                return 0
+                return tabLineSpacing
             }
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -336,8 +386,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuInterItemSpacing
             case tabCollectionView:
                 return tabInterItemSpacing
+//            case recommendCollectionView:
+//                return recInterItemSpacing
             default:
-                return 0
+                return tabInterItemSpacing
             }
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -346,8 +398,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuInset
             case tabCollectionView:
                 return tabInset
+//            case recommendCollectionView:
+//                return recInset
             default:
-                return .zero
+                return tabInset
             }
         }
 }
@@ -359,8 +413,10 @@ extension HomeViewController: UICollectionViewDataSource {
             return menuList.count
         case tabCollectionView:
             return tabList.count
+//        case recommendCollectionView:
+//            return recommendList.count
         default:
-            return .zero
+            return tabList.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -375,13 +431,22 @@ extension HomeViewController: UICollectionViewDataSource {
                     as? TabCollectionViewCell else {return UICollectionViewCell() }
             tabCell.dataBind(model: tabList[indexPath.item])
             return tabCell
+//        case recommendCollectionView:
+//            guard let recCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
+//                    as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
+//            recCell.dataBind(model: recommendList[indexPath.item])
+//            return recCell
+                   
         default:
-            return UICollectionViewCell()
+            guard let tabCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCollectionViewCell.identifier, for: indexPath)
+                    as? TabCollectionViewCell else {return UICollectionViewCell() }
+            tabCell.dataBind(model: tabList[indexPath.item])
+            return tabCell
         }
     }
 }
 struct HomeViewControllerPreView:PreviewProvider {
     static var previews: some View {
-        SearchViewController().toPreview()
+        HomeViewController().toPreview()
     }
 }

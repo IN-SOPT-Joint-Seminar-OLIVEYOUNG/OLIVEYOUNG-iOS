@@ -7,15 +7,16 @@
 
 import UIKit
 import SnapKit
+import Then
 
 class TabCollectionViewCell: UICollectionViewCell {
     static let identifier = "TabCollectionViewCell"
     
-    private let ContainerView = UIView()
+//    private let ContainerView = UIView()
     
     private let tabLabel = UILabel().then{
         $0.font = .tittleSubhead1
-        $0.textColor = .systemGray2
+        $0.textColor = .black
     }
     
     
@@ -37,21 +38,19 @@ extension TabCollectionViewCell {
     // MARK: - Layout Helpers
     
     private func layout() {
-        backgroundColor = .clear
         contentView.backgroundColor = .clear
-        [ContainerView,tabLabel].forEach {
-            contentView.addSubview($0)
-        }
-        ContainerView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(8)
-            $0.centerX.equalToSuperview()
-//            $0.leading.equalToSuperview().offset(9)
-//            $0.height.equalTo(192)
-        }
+        contentView.addSubview(tabLabel)
+//        ContainerView.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(8)
+//            $0.centerX.equalToSuperview()
+////            $0.leading.equalToSuperview().offset(9)
+////            $0.height.equalTo(192)
+//        }
         
         tabLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(17)
+            $0.centerX.centerY.equalToSuperview()
+//            $0.top.equalToSuperview()
+            $0.height.equalTo(29)
         }
 
         

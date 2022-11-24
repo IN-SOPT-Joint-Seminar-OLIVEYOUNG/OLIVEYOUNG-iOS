@@ -9,7 +9,6 @@ import UIKit
 
 class RecommendViewController: UIViewController {
     private lazy var recommendCollectionView: UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -29,10 +28,10 @@ class RecommendViewController: UIViewController {
            ]
     
     
-    final let Inset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
-    final let InterItemSpacing : CGFloat = 15
-    final let LineSpacing : CGFloat = 16
-    final let CellHeight : CGFloat = 192
+    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let recInterItemSpacing : CGFloat = 15
+    final let recLineSpacing : CGFloat = 16
+    final let recCellHeight : CGFloat = 192
     
   
     override func viewDidLoad() {
@@ -52,8 +51,11 @@ extension RecommendViewController {
         view.backgroundColor = .white
         view.addSubview(recommendCollectionView)
         recommendCollectionView.snp.makeConstraints {make in
-            make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(230)
+            recommendCollectionView.snp.makeConstraints {make in
+                make.top.equalToSuperview().offset(16)
+                make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+                make.height.equalTo(192)
+            }
         }
     }
     private func register() {
@@ -66,20 +68,20 @@ extension RecommendViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let screenWidth = UIScreen.main.bounds.width
-            let doubleCellWidth = screenWidth - Inset.left - Inset.right - InterItemSpacing
+            let doubleCellWidth = screenWidth - recInset.left - recInset.right - recInterItemSpacing
             return CGSize(width: doubleCellWidth / 4, height: 192)
         }
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return LineSpacing
+            return recLineSpacing
         }
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return InterItemSpacing
+            return recInterItemSpacing
         }
 
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return Inset
+            return recInset
         }
     
 }
