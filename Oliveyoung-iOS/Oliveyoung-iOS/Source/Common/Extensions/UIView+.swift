@@ -40,4 +40,17 @@ extension UIView {
             layer.borderColor = newValue.cgColor
         }
     }
+    
+    public func makeRounded(radius: CGFloat) {
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+    }
+    
+    public func makeColorRounded(_ radius: CGFloat, _ width: CGFloat, _ color: UIColor) {
+        
+        self.makeRounded(radius: radius)
+        layer.borderWidth = width
+        layer.borderColor = color.cgColor
+    }
 }
