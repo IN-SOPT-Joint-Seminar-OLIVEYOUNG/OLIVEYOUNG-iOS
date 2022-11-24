@@ -7,7 +7,14 @@
 
 import UIKit
 
+import Then
+
 class HomeViewController: UIViewController {
+    
+    private let friendLabel = UILabel().then {
+        $0.text = "친구"
+        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
