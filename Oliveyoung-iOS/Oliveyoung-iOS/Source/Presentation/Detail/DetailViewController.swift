@@ -71,6 +71,8 @@ final class DetailViewController: UIViewController {
     private let productUnderlineView = UIView()
     private let deliveryUnderlineView = UIView()
     private let availableUnderlineView = UIView()
+    private let tabbarButtonUnderlineView = UIView()
+    private let tabbarButtonSelectedUnderlineView = UIView()
     private let productDetailUnderlineView = UIView()
     private let recommendUnderlineView = UIView()
     private let relatedUnderlineView = UIView()
@@ -218,6 +220,21 @@ final class DetailViewController: UIViewController {
         $0.textColor = 0x2f2f2f.color
     }
     
+    private let productDetailLabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x8e8e8e.color
+    }
+    
+    private let reviewLabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x8e8e8e.color    }
+    
+    private let qAndALabel = UILabel().then {
+        $0.font = .tittleSubhead1
+        $0.textColor = 0x8e8e8e.color
+    }
+    
+    
     private let rateImageView = UIImageView(image: UIImage(named: "starRate"))
     private let singleStarImageView = UIImageView(image: UIImage(named: "star14X14"))
     private let productImageView = UIImageView(image: UIImage(named: "detailView"))
@@ -227,15 +244,21 @@ final class DetailViewController: UIViewController {
     //MARK: - Variables
     var isSelected = true
     
-    var tagList = ["립밤", "핸드크림", "틴트", "쿠션", "마스크팩"]
+    var tagList = [
+        "립밤",
+        "핸드크림",
+        "틴트",
+        "쿠션",
+        "마스크팩"
+    ]
     
-    var recommendList:[recommendModel] = [
+    var recommendList: [recommendModel] = [
         recommendModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000"),
         recommendModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500"),
         recommendModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "", price: "28,000")
         ]
     
-    var relateList:[relateModel] = [
+    var relateList: [relateModel] = [
         relateModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "", price: "27,000", discountRate: "23%"),
         relateModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml ", productImage: "", price: "21,600", discountRate: "32%"),
         relateModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "", price: "19,310", discountRate: "5%")
@@ -343,6 +366,14 @@ extension DetailViewController {
             storeStatusLabel,
             separatelineView,
             stockLabel
+        )
+        
+        tabbarButtonContainerView.addSubviews(
+            productDetailLabel,
+            reviewLabel,
+            qAndALabel,
+            tabbarButtonUnderlineView,
+            tabbarButtonSelectedUnderlineView
         )
         
         productDetailContainerView.addSubview(productImageView)
@@ -650,6 +681,35 @@ extension DetailViewController {
             $0.trailing.equalToSuperview()
         }
         
+        //tabbarButtonContainerView
+        productDetailLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(15)
+        }
+        
+        reviewLabel.snp.makeConstraints {
+            $0.top.equalTo(productDetailLabel)
+            $0.centerX.equalToSuperview()
+        }
+
+        qAndALabel.snp.makeConstraints {
+            $0.top.equalTo(productDetailLabel)
+            $0.trailing.equalToSuperview().offset(-14.9)
+        }
+
+        tabbarButtonUnderlineView.snp.makeConstraints {
+            $0.top.equalTo(productDetailLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+
+        tabbarButtonSelectedUnderlineView.snp.makeConstraints {
+            $0.bottom.equalTo(tabbarButtonUnderlineView.snp.top)
+            $0.leading.trailing.equalTo(productDetailLabel)
+            $0.height.equalTo(2)
+            
+        }
+        
         productImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -738,6 +798,9 @@ extension DetailViewController {
         self.relateLabel.text = "이 상품은 어떠세요?"
         self.recommendLabel.text = "방금 본 것과 유사한 상품이에요"
         self.purchaseLabel.text = "구매하기"
+        self.productDetailLabel.text = "제품상세"
+        self.reviewLabel.text = "리뷰"
+        self.qAndALabel.text = "Q&A"
     }
     
     private func viewConfig() {
@@ -750,6 +813,8 @@ extension DetailViewController {
         availableGreenUnderlineView.backgroundColor = 0xa4d232.color
         separatelineView.backgroundColor = 0xebebeb.color
         purchaseView.backgroundColor = 0xa4d232.color
+        tabbarButtonUnderlineView.backgroundColor = 0xebebeb.color
+        tabbarButtonSelectedUnderlineView.backgroundColor = 0x2f2f2f.color
     }
     
     private func configDelegate() {

@@ -21,3 +21,7 @@ struct relateModel {
     var price: String
     var discountRate: String
 }
+
+struct searchModel {
+    var name: String
+}
