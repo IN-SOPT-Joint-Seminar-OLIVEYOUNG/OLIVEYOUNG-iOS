@@ -10,7 +10,8 @@ import Foundation
 extension Const {
     
     struct Identifier {
-        
-//        static let TagCollectionViewCell = "TagCollectionViewCell"
+        static let RecentWordCollectionViewCell = "RecentWordCollectionViewCell"
+        static let PopularWordCollectionViewCell = "PopularWordCollectionViewCell"
+        static let SearchSectionView = "SearchSectionView"
     }
 }
