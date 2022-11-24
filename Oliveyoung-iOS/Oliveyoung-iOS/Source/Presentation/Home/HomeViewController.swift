@@ -47,23 +47,44 @@ final class HomeViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
         collectionView.showsVerticalScrollIndicator = false
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
         return collectionView
     }()
-    private let recommendView = UIView()
-//    private lazy var recommendCollectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-////        collectionView.backgroundColor = .clear
-////        collectionView.translatesAutoresizingMaskIntoConstraints = false
-////        collectionView.isScrollEnabled = false
-////        collectionView.showsVerticalScrollIndicator = false
-//
-//        return collectionView
-//    }()
-//
+    private lazy var recommendCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
+    private lazy var brandCollectionView: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
+    }()
+    private lazy var detailCollectionView: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
+    }()
     
+
     
     //MARK: - Variables
     var menuList: [MenuModel] = [
@@ -80,12 +101,26 @@ final class HomeViewController: UIViewController {
     ]
     var tabList: [TabModel] = [
         TabModel(Name: "추천"),TabModel(Name: "특가"),TabModel(Name: "랭킹"),TabModel(Name: "이벤트"),TabModel(Name: "세일") ]
-//    var recommendList: [RecommendModel] = [
-//        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-//        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-//        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
-//
-//       ]
+    var recommendList: [RecommendModel] = [
+        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+
+       ]
+    var brandList: [BrandModel] = [
+        BrandModel(Image: "drg", Brand: "비욘드"),
+        BrandModel(Image: "urage", Brand: "유리아주"),
+        BrandModel(Image: "nuxe", Brand: "넉스"),
+        BrandModel(Image: "innerlab", Brand: "이너랩"),
+        BrandModel(Image: "freemay", Brand: "프리메이"),
+       ]
+    var DetailList: [RecommendModel] = [
+        RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+        RecommendModel(Image: "bremish", Brand: "닥터지", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+        RecommendModel(Image: "oil", Brand: "닥터지", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+       ]
+    
+    
     // MARK: - Constants
     final let menuInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
     final let menuInterItemSpacing : CGFloat = 1
@@ -95,11 +130,19 @@ final class HomeViewController: UIViewController {
     final let tabInterItemSpacing : CGFloat = 10
     final let tabLineSpacing : CGFloat = 3
     final let tabCellHeight : CGFloat = 17
-//    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
-//    final let recInterItemSpacing : CGFloat = 15
-//    final let recLineSpacing : CGFloat = 16
-//    final let recCellHeight : CGFloat = 192
-//
+    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let recInterItemSpacing : CGFloat = 15
+    final let recLineSpacing : CGFloat = 16
+    final let recCellHeight : CGFloat = 192
+    final let brandInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let brandInterItemSpacing : CGFloat = 12
+    final let brandLineSpacing : CGFloat = 16
+    final let brandCellHeight : CGFloat = 76
+    final let detailInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let detailInterItemSpacing : CGFloat = 15
+    final let detailLineSpacing : CGFloat = 16
+    final let detailCellHeight : CGFloat = 192
+
     private let recommendViewTitle = UILabel().then {
         $0.text = "김채령님을 위한 추천 상품!"
         $0.font = .tittleHeadline
@@ -121,8 +164,8 @@ final class HomeViewController: UIViewController {
         $0.font = .bodyBody1
         $0.textColor = .black
     }
-    private let brandRecommendView = UIView()
-    private let brandDetailView = UIView()
+
+//    private let brandDetailView = UIView()
     private let onlyViewTitle = UILabel().then {
         $0.text = "오직 올리브영에서만"
         $0.font = .tittleHeadline
@@ -183,7 +226,7 @@ extension HomeViewController {
     
     private func layout() {
         view.addSubview(containerView)
-        [titleView,tabCollectionView,adImageView,menuCollectionView,recommendViewTitle,moreLabel,recommendView,brandRecommendViewTitle,moreLabel2,brandRecommendView,brandDetailView,onlyViewTitle,moreLabel3,adImageView1,adImageView2,adImageView3,keyWordTitle,moreLabel4,adImageView4,adImageView5,finalImage,finalImage2].forEach {
+        [titleView,tabCollectionView,adImageView,menuCollectionView,recommendViewTitle,moreLabel,recommendCollectionView,brandRecommendViewTitle,moreLabel2,brandCollectionView,detailCollectionView,onlyViewTitle,moreLabel3,adImageView1,adImageView2,adImageView3,keyWordTitle,moreLabel4,adImageView4,adImageView5,finalImage,finalImage2].forEach {
             containerView.addSubview($0)
         }
         containerView.snp.makeConstraints { make in
@@ -223,7 +266,7 @@ extension HomeViewController {
         menuCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.adImageView.snp.bottom).offset(13)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(230)
+            make.height.equalTo(166)
         }
         recommendViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.menuCollectionView.snp.bottom).offset(48)
@@ -234,38 +277,38 @@ extension HomeViewController {
             make.trailing.equalTo(self.self.view.safeAreaLayoutGuide).offset(-15)
             make.height.equalTo(19)
         }
-        recommendView.snp.makeConstraints {make in
+        recommendCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.recommendViewTitle.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(192)
         }
         brandRecommendViewTitle.snp.makeConstraints {make in
-            make.top.equalTo(self.recommendView.snp.bottom).offset(48)
+            make.top.equalTo(self.recommendCollectionView.snp.bottom).offset(48)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(19)
         }
         moreLabel2.snp.makeConstraints {make in
-            make.top.equalTo(self.recommendView.snp.bottom).offset(48)
+            make.top.equalTo(self.recommendCollectionView.snp.bottom).offset(48)
             make.trailing.equalTo(self.self.view.safeAreaLayoutGuide).offset(-15)
             make.height.equalTo(19)
         }
-        brandRecommendView.snp.makeConstraints {make in
+        brandCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.brandRecommendViewTitle.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(76)
         }
-        brandDetailView.snp.makeConstraints {make in
-            make.top.equalTo(self.brandRecommendView.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+        detailCollectionView.snp.makeConstraints {make in
+            make.top.equalTo(self.brandCollectionView.snp.bottom).offset(16)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(192)
         }
         onlyViewTitle.snp.makeConstraints {make in
-            make.top.equalTo(self.brandDetailView.snp.bottom).offset(48)
+            make.top.equalTo(self.detailCollectionView.snp.bottom).offset(48)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(15)
             make.height.equalTo(19)
         }
         moreLabel3.snp.makeConstraints {make in
-            make.top.equalTo(self.brandDetailView.snp.bottom).offset(48)
+            make.top.equalTo(self.detailCollectionView.snp.bottom).offset(48)
             make.trailing.equalTo(self.self.view.safeAreaLayoutGuide).offset(-15)
             make.height.equalTo(19)
         }
@@ -321,8 +364,12 @@ extension HomeViewController {
         menuCollectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: MenuCollectionViewCell.identifier)
         tabCollectionView.register(TabCollectionViewCell.self, forCellWithReuseIdentifier:
                                     TabCollectionViewCell.identifier)
-//        recommendCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
-//                                    ReccomendCollectionViewCell.identifier)
+        recommendCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
+                                    ReccomendCollectionViewCell.identifier)
+        brandCollectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier:
+                                    BrandCollectionViewCell.identifier)
+        detailCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
+                                    ReccomendCollectionViewCell.identifier)
         
     }
     
@@ -331,18 +378,14 @@ extension HomeViewController {
         menuCollectionView.dataSource = self
         tabCollectionView.delegate = self
         tabCollectionView.dataSource = self
-//        recommendCollectionView.delegate = self
-//        recommendCollectionView.dataSource = self
+        recommendCollectionView.delegate = self
+        recommendCollectionView.dataSource = self
     }
     
     // MARK: - General Helpers
     private func config() {
         view.backgroundColor = .white
-        adImageView.backgroundColor = .green
-//        tabCollectionView.backgroundColor = .red
-//        recommendView.backgroundColor = .green
-        brandRecommendView.backgroundColor = .systemBlue
-        brandDetailView.backgroundColor = .purple
+//        brandDetailView.backgroundColor = .purple
     }
 }
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -358,10 +401,18 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             let screenWidth = UIScreen.main.bounds.width
             let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
             return CGSize(width: tabdoubleCellWidth / 6, height: 29)
-//        case recommendCollectionView:
-//            let screenWidth = UIScreen.main.bounds.width
-//            let doubleCellWidth = screenWidth - recInset.left - recInset.right - recInterItemSpacing
-//            return CGSize(width: doubleCellWidth / 4, height: 192)
+        case recommendCollectionView:
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - recInset.left - recInset.right - recInterItemSpacing
+            return CGSize(width: doubleCellWidth / 4, height: 200)
+        case brandCollectionView:
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - brandInset.left - brandInset.right - brandInterItemSpacing
+            return CGSize(width: doubleCellWidth / 6, height: 76)
+        case detailCollectionView:
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - detailInset.left - detailInset.right - detailInterItemSpacing
+            return CGSize(width: doubleCellWidth / 4, height: 192)
         default:
             let screenWidth = UIScreen.main.bounds.width
             let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
@@ -374,8 +425,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuLineSpacing
             case tabCollectionView:
                 return tabLineSpacing
-//            case recommendCollectionView:
-//                return recLineSpacing
+            case recommendCollectionView:
+                return recLineSpacing
+            case brandCollectionView:
+                return brandLineSpacing
+            case detailCollectionView:
+                return detailLineSpacing
             default:
                 return tabLineSpacing
             }
@@ -386,8 +441,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuInterItemSpacing
             case tabCollectionView:
                 return tabInterItemSpacing
-//            case recommendCollectionView:
-//                return recInterItemSpacing
+            case recommendCollectionView:
+                return recInterItemSpacing
+            case brandCollectionView:
+                return brandInterItemSpacing
+            case detailCollectionView:
+                return detailInterItemSpacing
             default:
                 return tabInterItemSpacing
             }
@@ -398,8 +457,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 return menuInset
             case tabCollectionView:
                 return tabInset
-//            case recommendCollectionView:
-//                return recInset
+            case recommendCollectionView:
+                return recInset
+            case brandCollectionView:
+                return brandInset
+            case detailCollectionView:
+                return detailInset
             default:
                 return tabInset
             }
@@ -413,8 +476,12 @@ extension HomeViewController: UICollectionViewDataSource {
             return menuList.count
         case tabCollectionView:
             return tabList.count
-//        case recommendCollectionView:
-//            return recommendList.count
+        case recommendCollectionView:
+            return recommendList.count
+        case brandCollectionView:
+            return brandList.count
+        case detailCollectionView:
+            return DetailList.count
         default:
             return tabList.count
         }
@@ -431,12 +498,22 @@ extension HomeViewController: UICollectionViewDataSource {
                     as? TabCollectionViewCell else {return UICollectionViewCell() }
             tabCell.dataBind(model: tabList[indexPath.item])
             return tabCell
-//        case recommendCollectionView:
-//            guard let recCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
-//                    as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
-//            recCell.dataBind(model: recommendList[indexPath.item])
-//            return recCell
-                   
+        case recommendCollectionView:
+            guard let recCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
+                    as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
+            recCell.dataBind(model: recommendList[indexPath.item])
+            return recCell
+        case brandCollectionView:
+            guard let brandCell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath)
+                    as? BrandCollectionViewCell else {return UICollectionViewCell() }
+            brandCell.dataBind(model: brandList[indexPath.item])
+            return brandCell
+            
+        case detailCollectionView:
+            guard let detailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
+                    as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
+            detailCell.dataBind(model: recommendList[indexPath.item])
+            return detailCell
         default:
             guard let tabCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCollectionViewCell.identifier, for: indexPath)
                     as? TabCollectionViewCell else {return UICollectionViewCell() }
