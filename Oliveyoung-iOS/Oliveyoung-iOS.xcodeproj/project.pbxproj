@@ -21,6 +21,12 @@
 		DA9C6645292E85F400B28678 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */; };
 		DA9C6647292E861A00B28678 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6646292E861A00B28678 /* TabModel.swift */; };
 		DA9C6649292E86F600B28678 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6648292E86F600B28678 /* TabViewController.swift */; };
+		3709E087292A394300222F3E /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709E086292A394300222F3E /* ProductModel.swift */; };
+		37A27091292B7CE8008855D0 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37A27090292B7CE8008855D0 /* PretendardVariable.ttf */; };
+		37CB1C46292E2FAA00C94725 /* relateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB1C45292E2FAA00C94725 /* relateCollectionViewCell.swift */; };
+		37CB1C48292E730D00C94725 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB1C47292E730D00C94725 /* EmptyViewController.swift */; };
+		37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023229262A1A00283615 /* TagCollectionViewCell.swift */; };
+		37E0023529262A2800283615 /* recommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0023429262A2800283615 /* recommendCollectionViewCell.swift */; };
 		DD00B8DF292B9AC90027AA2D /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8DE292B9AC90027AA2D /* HomeRequest.swift */; };
 		DD00B8E1292B9AD30027AA2D /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8E0292B9AD30027AA2D /* HomeResponse.swift */; };
 		DD00B8E3292B9ADB0027AA2D /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8E2292B9ADB0027AA2D /* SearchRequest.swift */; };
@@ -94,6 +100,12 @@
 		DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA9C6646292E861A00B28678 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		DA9C6648292E86F600B28678 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		3709E086292A394300222F3E /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		37A27090292B7CE8008855D0 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
+		37CB1C45292E2FAA00C94725 /* relateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = relateCollectionViewCell.swift; sourceTree = "<group>"; };
+		37CB1C47292E730D00C94725 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		37E0023229262A1A00283615 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		37E0023429262A2800283615 /* recommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD00B8DE292B9AC90027AA2D /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		DD00B8E0292B9AD30027AA2D /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		DD00B8E2292B9ADB0027AA2D /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
@@ -186,6 +198,14 @@
 				DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		37A2708F292B7CE8008855D0 /* variable */ = {
+			isa = PBXGroup;
+			children = (
+				37A27090292B7CE8008855D0 /* PretendardVariable.ttf */,
+			);
+			path = variable;
 			sourceTree = "<group>";
 		};
 		DD00B8CE292B9A0D0027AA2D /* Service */ = {
@@ -301,6 +321,7 @@
 		DD1C74CB292B56D800E3E7A2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				37A2708F292B7CE8008855D0 /* variable */,
 				DD1C74D3292B57B300E3E7A2 /* Pretendard-Black.otf */,
 				DD1C74CE292B57B300E3E7A2 /* Pretendard-Bold.otf */,
 				DD1C74D0292B57B300E3E7A2 /* Pretendard-ExtraBold.otf */,
@@ -505,6 +526,7 @@
 		DDC28C8D29232F37003B87BB /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				37CB1C47292E730D00C94725 /* EmptyViewController.swift */,
 				DD0FC2972924C39800ACF342 /* SearchResultViewController.swift */,
 			);
 			path = SearchResult;
@@ -513,6 +535,10 @@
 		DDC28C8E29232F4C003B87BB /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				37E0023429262A2800283615 /* recommendCollectionViewCell.swift */,
+				37CB1C45292E2FAA00C94725 /* relateCollectionViewCell.swift */,
+				37E0023229262A1A00283615 /* TagCollectionViewCell.swift */,
+				3709E086292A394300222F3E /* ProductModel.swift */,
 				DD0FC2952924C38500ACF342 /* DetailViewController.swift */,
 			);
 			path = Detail;
@@ -595,6 +621,7 @@
 				DD1C74D9292B57B300E3E7A2 /* Pretendard-ExtraBold.otf in Resources */,
 				DD1C74D8292B57B300E3E7A2 /* Pretendard-SemiBold.otf in Resources */,
 				DD1C74D6292B57B300E3E7A2 /* Pretendard-Thin.otf in Resources */,
+				37A27091292B7CE8008855D0 /* PretendardVariable.ttf in Resources */,
 				DD1C74DD292B57B300E3E7A2 /* Pretendard-Light.otf in Resources */,
 				DDC28C742923234D003B87BB /* Colors.xcassets in Resources */,
 				DD1C74DC292B57B300E3E7A2 /* Pretendard-Black.otf in Resources */,
@@ -633,18 +660,22 @@
 				DDC28C8529232D91003B87BB /* Image.swift in Sources */,
 				DA9C6639292D35C700B28678 /* BrandModel.swift in Sources */,
 				DA9C6649292E86F600B28678 /* TabViewController.swift in Sources */,
+				3709E087292A394300222F3E /* ProductModel.swift in Sources */,
 				DD00B8F3292B9B220027AA2D /* SearchResultRouter.swift in Sources */,
 				DD20A8D2292F396800001411 /* PopularWordCollectionViewCell.swift in Sources */,
 				DD20A8D0292F396000001411 /* RecentWordCollectionViewCell.swift in Sources */,
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
+				37CB1C48292E730D00C94725 /* EmptyViewController.swift in Sources */,
 				DD20A8CC292F1C5C00001411 /* SearchSectionView.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
 				DA9C6643292D39E600B28678 /* DViewController.swift in Sources */,
+				37CB1C46292E2FAA00C94725 /* relateCollectionViewCell.swift in Sources */,
 				DD00B8E3292B9ADB0027AA2D /* SearchRequest.swift in Sources */,
 				DDC28C7D29232CD6003B87BB /* UIImageView+.swift in Sources */,
 				DA9C661E29294CD300B28678 /* MenuCollectionViewCell.swift in Sources */,
 				DDC28C8329232D75003B87BB /* Identifier.swift in Sources */,
+				37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */,
 				DD20A8CE292F304500001411 /* SearchView.swift in Sources */,
 				DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */,
 				DA9C6637292CDC4200B28678 /* PracticeViewController.swift in Sources */,
@@ -657,6 +688,7 @@
 				DDC28C54292320E0003B87BB /* SceneDelegate.swift in Sources */,
 				DD20A8C0292F0CC900001411 /* SearchSection.swift in Sources */,
 				DD0FC2982924C39800ACF342 /* SearchResultViewController.swift in Sources */,
+				37E0023529262A2800283615 /* recommendCollectionViewCell.swift in Sources */,
 				DDC28C7F29232D27003B87BB /* Const.swift in Sources */,
 				DD00B8EB292B9AFE0027AA2D /* DetailRequest.swift in Sources */,
 				DD00B8FB292B9BA70027AA2D /* NetworkConstant.swift in Sources */,
