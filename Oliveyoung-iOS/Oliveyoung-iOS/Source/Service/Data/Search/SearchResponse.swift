@@ -7,9 +7,18 @@
 
 import Foundation
 
-//struct ResentWords: Codable {
-//    let recentWords: [Word]
-//}
+// MARK: - SearchMain
+struct SearchMainResponse: Codable {
+    let recentWords: [String]
+    let products: [Product]
+}
+
+// MARK: - Product
+struct Product: Codable {
+    let brandName: String
+    let mainImg: String
+    let name, saledPrice, salePercent: String
+}
 
 struct Word {
     let word: String

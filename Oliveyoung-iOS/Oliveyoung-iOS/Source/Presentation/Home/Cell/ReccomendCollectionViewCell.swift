@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+import Kingfisher
+
 class ReccomendCollectionViewCell: UICollectionViewCell {
     static let identifier = "ReccomendCollectionViewCell"
     
@@ -90,6 +92,14 @@ extension ReccomendCollectionViewCell {
     }
     
     // MARK: - General Helpers
+    func configureUI(product: Product) {
+        brandLabel.text = product.brandName
+        nameLabel.text = product.name
+        price.text = product.saledPrice
+        percent.text = product.salePercent
+        guard let url = URL(string: product.mainImg) else { return }
+        ImageView.kf.setImage(with: url)
+    }
     
     func dataBind(model: RecommendModel) {
         brandLabel.text = model.Brand

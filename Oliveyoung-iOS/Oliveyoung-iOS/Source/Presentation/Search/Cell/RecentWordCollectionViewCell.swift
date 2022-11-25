@@ -53,7 +53,7 @@ class RecentWordCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureUI(word: Word) {
-        searchWordLabel.text = word.word
+    func configureUI(word: String) {
+        searchWordLabel.text = word
     }
 }
