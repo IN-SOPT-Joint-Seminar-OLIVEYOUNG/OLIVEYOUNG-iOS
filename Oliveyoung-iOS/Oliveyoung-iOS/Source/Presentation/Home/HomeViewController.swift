@@ -130,7 +130,7 @@ final class HomeViewController: UIViewController {
     final let tabInterItemSpacing : CGFloat = 10
     final let tabLineSpacing : CGFloat = 3
     final let tabCellHeight : CGFloat = 17
-    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 15)
     final let recInterItemSpacing : CGFloat = 15
     final let recLineSpacing : CGFloat = 16
     final let recCellHeight : CGFloat = 192
@@ -138,7 +138,7 @@ final class HomeViewController: UIViewController {
     final let brandInterItemSpacing : CGFloat = 12
     final let brandLineSpacing : CGFloat = 16
     final let brandCellHeight : CGFloat = 76
-    final let detailInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let detailInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 15)
     final let detailInterItemSpacing : CGFloat = 15
     final let detailLineSpacing : CGFloat = 16
     final let detailCellHeight : CGFloat = 192
@@ -256,10 +256,10 @@ extension HomeViewController {
         tabCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.titleView.snp.bottom).offset(24)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(29)
+            make.height.equalTo(20)
         }
         adImageView.snp.makeConstraints{make in
-            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(13)
+            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(1)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(216)
         }
@@ -279,7 +279,7 @@ extension HomeViewController {
         }
         recommendCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.recommendViewTitle.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(192)
         }
         brandRecommendViewTitle.snp.makeConstraints {make in
@@ -299,7 +299,7 @@ extension HomeViewController {
         }
         detailCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.brandCollectionView.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(192)
         }
         onlyViewTitle.snp.makeConstraints {make in
@@ -349,7 +349,7 @@ extension HomeViewController {
         }
         finalImage.snp.makeConstraints{make in
             make.top.equalTo(self.adImageView5.snp.bottom).offset(9)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(83)
         }
         finalImage2.snp.makeConstraints{make in
