@@ -294,6 +294,10 @@ final class DetailViewController: UIViewController {
         isLikeTapped()
         tempConfig()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 //MARK: - Extensions
