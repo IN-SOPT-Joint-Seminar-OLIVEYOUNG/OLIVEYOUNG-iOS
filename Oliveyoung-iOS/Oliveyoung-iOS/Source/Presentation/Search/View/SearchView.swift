@@ -27,6 +27,7 @@ final class SearchView: BaseView {
                     forCellWithReuseIdentifier: Const.Identifier.PopularWordCollectionViewCell)
         $0.register(RecentWordCollectionViewCell.self,
                     forCellWithReuseIdentifier: Const.Identifier.RecentWordCollectionViewCell)
+        $0.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier: ReccomendCollectionViewCell.identifier)
         $0.register(SearchSectionView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                     withReuseIdentifier: Const.Identifier.SearchSectionView)
@@ -45,7 +46,7 @@ final class SearchView: BaseView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom).offset(40)
+            $0.top.equalTo(navigationView.snp.bottom).offset(30)
             $0.leading.trailing.equalTo(safeAreaInsets).inset(15)
             $0.bottom.equalTo(safeAreaInsets)
         }

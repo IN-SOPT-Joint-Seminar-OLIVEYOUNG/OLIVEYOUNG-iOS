@@ -13,6 +13,12 @@ import Then
 
 final class SearchViewController: BaseViewController {
     // MARK: - Property
+    var recommendList: [RecommendModel] = [
+        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+        
+       ]
     
     // MARK: - Component
     private lazy var searchView = SearchView()
@@ -45,7 +51,7 @@ extension SearchViewController: UICollectionViewDelegate {}
 extension SearchViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -54,10 +60,10 @@ extension SearchViewController: UICollectionViewDataSource {
             
         case 0:
             return recentWordDummy.count
-        default:
+        case 1:
             return popularWordDummy.count
-//        default:
-//            return 1
+        default:
+            return recommendList.count
         }
     }
     
@@ -66,20 +72,16 @@ extension SearchViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.RecentWordCollectionViewCell, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-            
             cell.configureUI(word: recentWordDummy[indexPath.row])
-            
+            return cell
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PopularWordCollectionViewCell, for: indexPath) as? PopularWordCollectionViewCell else { return UICollectionViewCell() }
+            cell.configureUI(word: popularWordDummy[indexPath.row])
             return cell
         default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PopularWordCollectionViewCell, for: indexPath) as? PopularWordCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.configureUI(word: popularWordDummy[indexPath.row])
-            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath) as? ReccomendCollectionViewCell else { return UICollectionViewCell() }
+            cell.dataBind(model: recommendList[indexPath.row])
             return cell
-//        default:
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-//
-//            return cell
         }
     }
     
@@ -98,7 +100,9 @@ extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch section {
         case 0:
-            return UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        case 1:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         default:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -116,10 +120,13 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         switch indexPath.section {
         case 0:
             return CGSize(width: recentWordDummy[indexPath.item].word.size(withAttributes: [NSAttributedString.Key.font: UIFont.bodyBody5]).width + 20, height: 24)
-        default:
+        case 1:
             return CGSize(width: popularWordDummy[indexPath.item].word.size(withAttributes: [NSAttributedString.Key.font: UIFont.bodyBody5]).width + 20, height: 24)
-//        default:
-//            return CGSize(width: UIScreen.main.bounds.width - 40, height: 95)
+        default:
+            let recInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - recInset.left - recInset.right - 15
+            return CGSize(width: doubleCellWidth / 4, height: 192)
         }
     }
 }
