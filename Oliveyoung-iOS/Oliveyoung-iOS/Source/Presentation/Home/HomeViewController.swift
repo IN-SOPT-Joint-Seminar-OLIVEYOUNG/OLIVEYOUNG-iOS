@@ -217,6 +217,10 @@ final class HomeViewController: UIViewController {
         register()
         configDelegate()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 //MARK: - extension
