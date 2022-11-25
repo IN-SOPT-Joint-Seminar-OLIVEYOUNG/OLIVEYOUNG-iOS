@@ -10,7 +10,6 @@ import SnapKit
 
 class BrandDetailCollectionViewCell: UICollectionViewCell {
     static let identifier = "BrandDetailCollectionViewCell"
-    
     private let ContainerView = UIView()
     private let ImageView = UIImageView()
     private let brandLabel = UILabel().then{
@@ -53,25 +52,19 @@ extension BrandDetailCollectionViewCell {
         [ContainerView,ImageView,brandLabel,nameLabel,price,percent].forEach {
             contentView.addSubview($0)
         }
-        
-//        ContainerView.addSubview(ImageView)
         ContainerView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(9)
-//            $0.height.equalTo(192)
         }
-        
         ImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(120)
         }
-        
         brandLabel.snp.makeConstraints {
             $0.top.equalTo(ImageView.snp.bottom).offset(8)
             $0.leading.equalTo(self.ContainerView.snp.leading)
         }
-        
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(brandLabel.snp.bottom).offset(8)
             $0.leading.equalTo(self.ContainerView.snp.leading)
@@ -84,8 +77,6 @@ extension BrandDetailCollectionViewCell {
             $0.top.equalTo(nameLabel.snp.bottom).offset(8)
             $0.trailing.equalTo(self.ContainerView.snp.trailing)
         }
-        
-        
     }
     
     // MARK: - General Helpers
