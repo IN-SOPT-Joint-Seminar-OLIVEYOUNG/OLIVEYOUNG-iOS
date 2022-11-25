@@ -36,8 +36,7 @@ final class SearchViewController: BaseViewController {
                     guard let data = data as? SearchMainResponse else { return }
                     self.recommendList = data.products
                     self.recentWordList = data.recentWords
-                    print("⚡️\(self.recentWordList)")
-                    print("⚡️\(self.recommendList)")
+                    self.searchView.collectionView.reloadData()
                 case .requestErr(_):
                     print("requestErr")
                 case .pathErr:
@@ -89,7 +88,6 @@ extension SearchViewController: UICollectionViewDataSource {
         switch section {
             
         case 0:
-            print("💗recentWordList.count \(recentWordList.count)")
             return recentWordList.count
         case 1:
             return popularWordDummy.count
