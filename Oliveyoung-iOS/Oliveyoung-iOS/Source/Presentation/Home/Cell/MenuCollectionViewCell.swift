@@ -50,6 +50,7 @@ extension MenuCollectionViewCell {
         }
         
         menuImageView.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
             $0.top.leading.trailing.equalToSuperview()
             $0.width.equalTo(menuImageView.snp.height).multipliedBy(1)
 //            $0.height.width.equalTo(57)
