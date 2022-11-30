@@ -38,6 +38,7 @@ final class SearchViewController: BaseViewController {
                     self.recentWordList = data.recentWords
                     self.searchView.collectionView.reloadData()
                 case .requestErr(_):
+                    self.recentWordList = Word.setRecentWordDummy()
                     print("requestErr")
                 case .pathErr:
                     print("pathErr")
@@ -55,14 +56,12 @@ final class SearchViewController: BaseViewController {
     // MARK: - LifeCycle
     override func loadView() {
         self.view = searchView
-        
-        getSearch()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        getSearch()
+        getSearch()
         registerCollectionView()
     }
     

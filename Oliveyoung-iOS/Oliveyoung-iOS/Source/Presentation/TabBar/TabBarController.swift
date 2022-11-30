@@ -36,14 +36,9 @@ final class TabBarController: UITabBarController {
 extension TabBarController {
     
     private func setTabBarAppearance() {
-        
-        UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().tintColor = .willaGrayGray500
-//        UITabBar.appearance().unselectedItemTintColor = .willaGrayGray500
-//
-//        let fontAttributes = [NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 10.0)!]
-//        UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
-//
+        tabBar.barTintColor = .white
+
 //        tabBar.layer.borderWidth = 0.5
 //        tabBar.layer.borderColor = UIColor.willaGrayGray500.cgColor
     }
