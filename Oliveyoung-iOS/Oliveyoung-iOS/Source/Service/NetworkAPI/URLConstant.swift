@@ -15,5 +15,5 @@ struct URLConstant {
     static let mainBrand = "/main/brand"
     static let searchMain = "/search/main"
     static let search = "/search"
-    static let product = "/product"
+    static let product = "/product/1"
 }

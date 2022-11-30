@@ -11,6 +11,7 @@ import SwiftUI
 import Then
 import SnapKit
 import SwiftyColor
+import Moya
 
 //MARK: - DetailViewController
 final class DetailViewController: UIViewController {
@@ -241,30 +242,8 @@ final class DetailViewController: UIViewController {
     private let productImageView = UIImageView(image: UIImage(named: "detailView"))
     private let searchGreenImageView = UIImageView(image: UIImage(named: "searchIcon_green12X12"))
 
-    
     //MARK: - Variables
     var isSelected = true
-    
-    var tagList = [
-        "립밤",
-        "핸드크림",
-        "틴트",
-        "쿠션",
-        "마스크팩"
-    ]
-    
-    var recommendList: [recommendModel] = [
-        recommendModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000"),
-        recommendModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500"),
-        recommendModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "", price: "28,000")
-        ]
-    
-    var relateList: [relateModel] = [
-        relateModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "", price: "27,000", discountRate: "23%"),
-        relateModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml ", productImage: "", price: "21,600", discountRate: "32%"),
-        relateModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "", price: "19,310", discountRate: "5%")
-        
-    ]
     
     //MARK: - Consonants
     final let tagInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -281,6 +260,19 @@ final class DetailViewController: UIViewController {
     final let relateLineSpacing: CGFloat = 0
     final let relateInterItemSpacing: CGFloat = 15
     final let relateCellHeight: CGFloat = 148
+    
+    //MARK: - Property
+    var tagList = [
+        "립밤",
+        "핸드크림",
+        "틴트",
+        "쿠션",
+        "마스크팩"
+    ]
+    
+    private let detailProvider = MoyaProvider<SearchRouter>(plugins: [MoyaLoggingPlugin()])
+    private var recommendList: [Recommend] = []
+    private var relateList: [Recommend] = []
     
     //MARK: - Life Cycles
     override func viewDidLoad() {
@@ -855,6 +847,36 @@ extension DetailViewController {
             likeButton.setImage(UIImage(named: "property1Like24X24"), for: .normal)
         }
     }
+    
+    // MARK: - Server Helpers
+    private func getSearch() {
+        detailProvider.request(.getSearch) { result in
+            switch result {
+            case .success(let response):
+                let status = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: status, data, DetailMainResponse.self)
+                switch networkResult {
+                case .success(let data):
+                    guard let data = data as? DetailMainResponse else { return }
+                    self.recommendList = data.recommend
+                    self.relateList = data.recommend
+                    self.recommendCollectionView.reloadData()
+                case .requestErr(_):
+                    print("requestErr")
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -924,7 +946,7 @@ extension DetailViewController: UICollectionViewDataSource {
         } else if collectionView == recommendCollectionView {
             guard let recommendCell = collectionView.dequeueReusableCell(withReuseIdentifier: recommendCollectionViewCell.identifier, for: indexPath) as?
                     recommendCollectionViewCell else { return UICollectionViewCell() }
-            recommendCell.dataBind(model: recommendList[indexPath.item])
+            recommendCell.dataBind(model: recommendList[indexPath.item] )
             return recommendCell
         } else {
             guard let relateCell = collectionView.dequeueReusableCell(withReuseIdentifier: relateCollectionViewCell.identifier, for: indexPath) as?
@@ -935,8 +957,8 @@ extension DetailViewController: UICollectionViewDataSource {
     }
 }
 
-struct DetailViewControllerPreView:PreviewProvider {
-    static var previews: some View {
-        DetailViewController().toPreview()
-    }
-}
+//struct DetailViewControllerPreView:PreviewProvider {
+//    static var previews: some View {
+//        DetailViewController().toPreview()
+//    }
+//}

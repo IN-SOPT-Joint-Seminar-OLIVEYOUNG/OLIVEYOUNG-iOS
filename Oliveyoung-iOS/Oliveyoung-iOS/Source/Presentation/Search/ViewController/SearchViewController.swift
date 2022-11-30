@@ -101,7 +101,7 @@ extension SearchViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.RecentWordCollectionViewCell, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-            print("💗cell \(cell)")
+//            print("💗cell \(cell)")
             cell.configureUI(word: recentWordList[indexPath.row])
             return cell
         case 1:
@@ -161,8 +161,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-struct SearchViewControllerPreView:PreviewProvider {
-    static var previews: some View {
-        SearchViewController().toPreview()
-    }
-}
+//struct SearchViewControllerPreView:PreviewProvider {
+//    static var previews: some View {
+//        SearchViewController().toPreview()
+//    }
+//}

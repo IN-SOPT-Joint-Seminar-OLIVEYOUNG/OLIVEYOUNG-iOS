@@ -6,3 +6,42 @@
 //
 
 import Foundation
+
+// MARK: - DetailMain
+struct DetailMainResponse: Codable {
+    let products1: [Product1]
+    let recommend: [Recommend]
+}
+
+// MARK: - DataClass
+struct DataClass: Codable {
+    let product: Product
+    let recommends, similars: [Recommend]
+}
+
+// MARK: - Product
+struct Product1: Codable {
+    let brandName, name, saledPrice, originalPrice: String
+    let salePercent: String
+    let mainImg, detailImg: String
+    let detailImgHeight, detailImgWidth: Int
+    let isLiked: Bool
+    let rate: Double
+    let reviewCount: String
+}
+
+// MARK: - Recommend
+struct Recommend: Codable {
+    let brandName: String
+    let mainImg: String
+    let name, saledPrice: String
+    let salePercent: String?
+}
+
+//// MARK: - Relate
+//struct Relate: Codable {
+//    let brandName: String
+//    let mainImg: String
+//    let name, saledPrice: String
+//    let salePercent: String?
+//}
