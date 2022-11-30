@@ -87,6 +87,9 @@ final class HomeViewController: UIViewController {
 
     
     //MARK: - Variables
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
     var menuList: [MenuModel] = [
         MenuModel(menuImage: "Rectangle 29", name: "카테고리"),
         MenuModel(menuImage: "col_2", name: "스킨케어"),
@@ -258,19 +261,19 @@ extension HomeViewController {
             make.trailing.equalToSuperview().inset(24)
         }
         tabCollectionView.snp.makeConstraints {make in
-            make.top.equalTo(self.titleView.snp.bottom).offset(24)
+            make.top.equalTo(self.titleView.snp.bottom).offset(12)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(20)
         }
         adImageView.snp.makeConstraints{make in
-            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(1)
+            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(12)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(216)
         }
         menuCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.adImageView.snp.bottom).offset(13)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(166)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(180)
         }
         recommendViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.menuCollectionView.snp.bottom).offset(48)
@@ -398,9 +401,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case menuCollectionView:
-            let screenWidth = UIScreen.main.bounds.width
             let menudoubleCellWidth = screenWidth - menuInset.left - menuInset.right - menuInterItemSpacing
-            return CGSize(width: menudoubleCellWidth / 6, height: 75)
+            return CGSize(width: menudoubleCellWidth / 6, height: (menudoubleCellWidth / 6) * 1.3)
         case tabCollectionView:
             let screenWidth = UIScreen.main.bounds.width
             let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
@@ -426,7 +428,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             switch collectionView{
             case menuCollectionView:
-                return menuLineSpacing
+                return 16
             case tabCollectionView:
                 return tabLineSpacing
             case recommendCollectionView:
@@ -442,7 +444,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             switch collectionView{
             case menuCollectionView:
-                return menuInterItemSpacing
+                return 4
             case tabCollectionView:
                 return tabInterItemSpacing
             case recommendCollectionView:
@@ -458,7 +460,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             switch collectionView{
             case menuCollectionView:
-                return menuInset
+                return UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 0)
             case tabCollectionView:
                 return tabInset
             case recommendCollectionView:

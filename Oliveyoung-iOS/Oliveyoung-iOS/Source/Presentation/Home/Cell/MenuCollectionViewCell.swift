@@ -35,23 +35,24 @@ extension MenuCollectionViewCell {
     // MARK: - Layout Helpers
     
     private func layout() {
-        backgroundColor = .clear
+//        backgroundColor = .clear
         contentView.backgroundColor = .clear
-        [menuContainerView,menuLabel].forEach {
-            contentView.addSubview($0)
+        [menuImageView,menuLabel].forEach {
+            menuContainerView.addSubview($0)
         }
-        
-        menuContainerView.addSubview(menuImageView)
+        contentView.addSubview(menuContainerView)
         menuContainerView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(0)
-            $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(0)
-//            $0.height.equalTo(57)
+//            $0.top.equalToSuperview().offset(0)
+//            $0.centerX.centerY.equalToSuperview()
+//            $0.leading.equalToSuperview().offset(0)
+//            $0.height.equalTo(75)
+            $0.edges.equalToSuperview()
         }
         
         menuImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.height.equalTo(57)
+            $0.top.leading.trailing.equalToSuperview()
+            $0.width.equalTo(menuImageView.snp.height).multipliedBy(1)
+//            $0.height.width.equalTo(57)
         }
         
         menuLabel.snp.makeConstraints {
