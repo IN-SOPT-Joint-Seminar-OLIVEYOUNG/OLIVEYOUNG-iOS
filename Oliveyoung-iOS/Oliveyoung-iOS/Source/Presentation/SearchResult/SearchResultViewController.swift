@@ -58,10 +58,13 @@ class SearchResultViewController: UIViewController {
     }()
     
     
-    var recommendList: [RecommendModel] = [
-        RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%")
-   ]
+//    var ProductList: [RecommendModel] = [
+//        RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+//        RecommendModel(Image: "bremish", Brand: "닥터지", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+//        RecommendModel(Image: "oil", Brand: "닥터지", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+//       ]
     
+    private var ProductList: [Product] = []
     
     final let productInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 15)
     final let productInterItemSpacing : CGFloat = 15
@@ -199,13 +202,14 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
     case brandCollectionView:
         return brandList.count
     case productCollectionView:
-        return recommendList.count
+        return ProductList.count
     default:
         return brandList.count
     }
 }
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch collectionView{
+        
     case brandCollectionView:
         guard let brandCell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath)
                 as? BrandCollectionViewCell else {return UICollectionViewCell() }
@@ -213,10 +217,9 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         return brandCell
         
     case productCollectionView:
-        guard let detailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
-                as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
-        detailCell.dataBind(model: recommendList[indexPath.item])
-        return detailCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath) as? ReccomendCollectionViewCell else { return UICollectionViewCell() }
+        cell.configureUI(product: ProductList[indexPath.row])
+        return cell
         
         
     default:
