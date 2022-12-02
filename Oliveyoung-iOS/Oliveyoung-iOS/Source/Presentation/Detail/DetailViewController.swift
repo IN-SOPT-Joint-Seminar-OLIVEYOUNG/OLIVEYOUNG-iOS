@@ -867,7 +867,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == tagCollectionView {
             let tempLabel: UILabel = UILabel()
             tempLabel.text = tagList[indexPath.item]
-            return CGSize(width: tempLabel.intrinsicContentSize.width, height: 27)
+            return CGSize(width: tagList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.bodyBody5]).width + 20, height: 27)
         } else if collectionView == recommendCollectionView {
             return CGSize(width: 105, height: 204)
         } else {
