@@ -22,6 +22,8 @@
 		DA9C663D292D361600B28678 /* BrandDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C663C292D361600B28678 /* BrandDetailCollectionViewCell.swift */; };
 		DA9C6645292E85F400B28678 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */; };
 		DA9C6647292E861A00B28678 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C6646292E861A00B28678 /* TabModel.swift */; };
+		DADB4BA9293A4B4B00DCADC2 /* resultProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB4BA8293A4B4B00DCADC2 /* resultProductModel.swift */; };
+		DADB4BAB293A4BBB00DCADC2 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB4BAA293A4BBB00DCADC2 /* ProductCollectionViewCell.swift */; };
 		DD00B8DF292B9AC90027AA2D /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8DE292B9AC90027AA2D /* HomeRequest.swift */; };
 		DD00B8E1292B9AD30027AA2D /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8E0292B9AD30027AA2D /* HomeResponse.swift */; };
 		DD00B8E3292B9ADB0027AA2D /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD00B8E2292B9ADB0027AA2D /* SearchRequest.swift */; };
@@ -99,6 +101,8 @@
 		DA9C663C292D361600B28678 /* BrandDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA9C6646292E861A00B28678 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		DADB4BA8293A4B4B00DCADC2 /* resultProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultProductModel.swift; sourceTree = "<group>"; };
+		DADB4BAA293A4BBB00DCADC2 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD00B8DE292B9AC90027AA2D /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		DD00B8E0292B9AD30027AA2D /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		DD00B8E2292B9ADB0027AA2D /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				DA9C6632292BFEEE00B28678 /* RecommendModel.swift */,
 				DA9C6638292D35C700B28678 /* BrandModel.swift */,
 				DA9C6646292E861A00B28678 /* TabModel.swift */,
+				DADB4BA8293A4B4B00DCADC2 /* resultProductModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				DA9C663A292D360500B28678 /* BrandCollectionViewCell.swift */,
 				DA9C663C292D361600B28678 /* BrandDetailCollectionViewCell.swift */,
 				DA9C6644292E85F400B28678 /* TabCollectionViewCell.swift */,
+				DADB4BAA293A4BBB00DCADC2 /* ProductCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				DD20A8C5292F142F00001411 /* BaseViewController.swift in Sources */,
 				DD20A8CA292F16CE00001411 /* SearchNavigationView.swift in Sources */,
 				DDC28C902923BB6E003B87BB /* UIFont+.swift in Sources */,
+				DADB4BA9293A4B4B00DCADC2 /* resultProductModel.swift in Sources */,
 				DA9C6631292BFDAD00B28678 /* ReccomendCollectionViewCell.swift in Sources */,
 				DDC28C8129232D47003B87BB /* ViewController.swift in Sources */,
 				DA9C6645292E85F400B28678 /* TabCollectionViewCell.swift in Sources */,
@@ -666,6 +673,7 @@
 				DDC28C7D29232CD6003B87BB /* UIImageView+.swift in Sources */,
 				DA9C661E29294CD300B28678 /* MenuCollectionViewCell.swift in Sources */,
 				DDC28C8329232D75003B87BB /* Identifier.swift in Sources */,
+				DADB4BAB293A4BBB00DCADC2 /* ProductCollectionViewCell.swift in Sources */,
 				37E0023329262A1A00283615 /* TagCollectionViewCell.swift in Sources */,
 				DD20A8CE292F304500001411 /* SearchView.swift in Sources */,
 				DD0FC29A2924C39E00ACF342 /* SearchViewController.swift in Sources */,

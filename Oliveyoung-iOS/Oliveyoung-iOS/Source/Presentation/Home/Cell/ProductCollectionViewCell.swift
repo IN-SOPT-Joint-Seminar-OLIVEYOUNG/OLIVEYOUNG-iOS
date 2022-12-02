@@ -10,8 +10,8 @@ import SnapKit
 
 import Kingfisher
 
-class ReccomendCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ReccomendCollectionViewCell"
+class ProductCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ProductCollectionViewCell"
     
     private let ContainerView = UIView()
     private let ImageView = UIImageView()
@@ -45,7 +45,7 @@ class ReccomendCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Extensions
 
-extension ReccomendCollectionViewCell {
+extension ProductCollectionViewCell {
     
     // MARK: - Layout Helpers
     
@@ -91,17 +91,21 @@ extension ReccomendCollectionViewCell {
         
     }
     
-    // MARK: - General Helpers
-    func configureUI(product: Product) {
-        brandLabel.text = product.brandName
-        nameLabel.text = product.name
-        price.text = product.saledPrice
-        percent.text = product.salePercent
-        guard let url = URL(string: product.mainImg) else { return }
-        ImageView.kf.setImage(with: url)
-    }
+//    // MARK: - General Helpers
+//    func configureUI(product: Product) {
+//        brandLabel.text = product.brandName
+//        nameLabel.text = product.name
+//        price.text = product.saledPrice
+//        percent.text = product.salePercent
+//        guard let url = URL(string: product.mainImg) else { return }
+//        ImageView.kf.setImage(with: url)
+//    }
 //brandName: self.brandName, mainImg: self.mainImg, name: self.name, saledPrice: self.saledPrice, salePercent: self.salePercent
-    func dataBind(model: Recommend) {
-       
+    func dataBind(model: resultProductModel) {
+        brandLabel.text = model.Brand
+        nameLabel.text = model.Name
+        ImageView.image = UIImage(named: model.Image)
+        price.text = model.Price
+        percent.text = model.Percent
     }
 }
