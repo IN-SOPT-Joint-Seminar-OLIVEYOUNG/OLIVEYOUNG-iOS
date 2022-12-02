@@ -66,8 +66,7 @@ final class DetailViewController: UIViewController {
     private let recommendContainerView = UIView()
     private let relatedProductContainerView = UIView()
     private let bottomContainerView = UIView().then {
-        $0.borderWidth = 1
-        $0.borderColor = 0xebebeb.color
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private let productUnderlineView = UIView()
@@ -284,7 +283,6 @@ final class DetailViewController: UIViewController {
         buttonConfig()
         viewConfig()
         isLikeTapped()
-        tempConfig()
     }
 }
 
@@ -808,6 +806,7 @@ extension DetailViewController {
         purchaseView.backgroundColor = 0xa4d232.color
         tabbarButtonUnderlineView.backgroundColor = 0xebebeb.color
         tabbarButtonSelectedUnderlineView.backgroundColor = 0x2f2f2f.color
+        bottomContainerView.addBorder(toSide: .Top, withColor: color.cgColor(), andThickness: 1.0 )
     }
     
     private func configDelegate() {
@@ -823,18 +822,6 @@ extension DetailViewController {
         tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         recommendCollectionView.register(recommendCollectionViewCell.self, forCellWithReuseIdentifier: recommendCollectionViewCell.identifier)
         relateCollectionView.register(relateCollectionViewCell.self, forCellWithReuseIdentifier: relateCollectionViewCell.identifier)
-    }
-    
-    private func tempConfig() {
-        productImageContainerView.backgroundColor = .systemGray4
-        //        productContainerView.backgroundColor = .red
-        //        deliveryContainerView.backgroundColor = .systemOrange
-        //        availableStoreContainerView.backgroundColor = .systemYellow
-        //        tabbarButtonContainerView.backgroundColor = .systemGreen
-        //        productDetailContainerView.backgroundColor = .systemBlue
-        //        recommendContainerView.backgroundColor = .systemPurple
-        //        relatedProductContainerView.backgroundColor = .systemCyan
-        //        bottomContainerView.backgroundColor = .systemGray6
     }
     
     //MARK: - Action Helpers
@@ -956,6 +943,29 @@ extension DetailViewController: UICollectionViewDataSource {
         }
     }
 }
+
+extension UIView {
+
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+
+    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+
+        let border = CALayer()
+        border.backgroundColor = color
+
+        switch side {
+        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+        }
+
+        layer.addSublayer(border)
+    }
+}
+
 
 //struct DetailViewControllerPreView:PreviewProvider {
 //    static var previews: some View {
