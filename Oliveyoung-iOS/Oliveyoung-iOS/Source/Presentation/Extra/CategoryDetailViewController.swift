@@ -6,24 +6,46 @@
 //
 
 import UIKit
+import SwiftUI
+
+import SnapKit
+import Then
 
 class CategoryDetailViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    static let identifier = "CategoryDetailViewController"
+    
+    private let viewImage = UIImageView().then {
+        $0.image = Const.Image.categoryImage
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        setView()
+        setLayout()
     }
-    */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    private func setView() {
+        view.addSubview(viewImage)
+    }
+    
+    private func setLayout() {
+        viewImage.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}
 
+struct CategoryDetailViewControllerPreView: PreviewProvider {
+    static var previews: some View {
+        CategoryDetailViewController().toPreview()
+    }
 }

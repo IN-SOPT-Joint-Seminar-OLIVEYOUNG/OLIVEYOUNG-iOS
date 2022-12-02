@@ -86,6 +86,7 @@
 		DDC28C8729232E0E003B87BB /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C8629232E0E003B87BB /* UIView+.swift */; };
 		DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C8829232E52003B87BB /* UILabel+.swift */; };
 		DDC28C902923BB6E003B87BB /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C8F2923BB6E003B87BB /* UIFont+.swift */; };
+		DDCC0D3C29399ECF0020D615 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCC0D3B29399ECF0020D615 /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,7 @@
 		DDC28C8629232E0E003B87BB /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		DDC28C8829232E52003B87BB /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		DDC28C8F2923BB6E003B87BB /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		DDCC0D3B29399ECF0020D615 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				DDC28C7C29232CD6003B87BB /* UIImageView+.swift */,
+				DDCC0D3B29399ECF0020D615 /* UIImage+.swift */,
 				DDC28C8629232E0E003B87BB /* UIView+.swift */,
 				DDC28C8829232E52003B87BB /* UILabel+.swift */,
 				DDC28C8F2923BB6E003B87BB /* UIFont+.swift */,
@@ -691,6 +694,7 @@
 				DD0FC2962924C38500ACF342 /* DetailViewController.swift in Sources */,
 				37CB1C48292E730D00C94725 /* EmptyViewController.swift in Sources */,
 				DD20A8CC292F1C5C00001411 /* SearchSectionView.swift in Sources */,
+				DDCC0D3C29399ECF0020D615 /* UIImage+.swift in Sources */,
 				DDC28C8929232E52003B87BB /* UILabel+.swift in Sources */,
 				DD0FC29C2924C3A500ACF342 /* HomeViewController.swift in Sources */,
 				37CB1C46292E2FAA00C94725 /* relateCollectionViewCell.swift in Sources */,

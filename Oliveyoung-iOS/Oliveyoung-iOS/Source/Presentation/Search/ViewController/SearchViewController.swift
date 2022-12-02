@@ -65,6 +65,10 @@ final class SearchViewController: BaseViewController {
         registerCollectionView()
     }
     
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension SearchViewController {
@@ -159,7 +163,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-struct SearchViewControllerPreView:PreviewProvider {
+struct SearchViewControllerPreView: PreviewProvider {
     static var previews: some View {
         SearchViewController().toPreview()
     }

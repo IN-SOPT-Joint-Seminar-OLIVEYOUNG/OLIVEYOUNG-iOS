@@ -34,6 +34,7 @@ final class SearchNavigationView: BaseView {
         searchArea.addSubviews(searchBar, searchButton)
         searchHeader.addSubviews(backButton, searchArea)
         addSubview(searchHeader)
+        backButton.addTarget(self, action: #selector(SearchViewController.backButtonDidTap), for: .touchUpInside)
     }
     
     override func setLayout() {
@@ -64,4 +65,5 @@ final class SearchNavigationView: BaseView {
             $0.trailing.equalTo(searchButton.snp.leading)
         }
     }
+    
 }

@@ -527,6 +527,15 @@ extension HomeViewController: UICollectionViewDataSource {
             return tabCell
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 1 {
+            self.navigationController?.pushViewController(CategoryDetailViewController(), animated: true)
+        }
+        else {
+            self.navigationController?.pushViewController(ErrorViewController(), animated: true)
+        }
+    }
+    
 }
 struct HomeViewControllerPreView:PreviewProvider {
     static var previews: some View {

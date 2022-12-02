@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 import SnapKit
 import Then
@@ -29,6 +30,7 @@ final class ErrorViewController: UIViewController {
         
         setUI()
         setView()
+        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +50,17 @@ final class ErrorViewController: UIViewController {
         errorImage.snp.makeConstraints {
             $0.width.height.equalTo(50)
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalToSuperview().offset(150)
         }
         errorMessage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(errorImage.snp.bottom).offset(15)
         }
+    }
+}
+
+struct ErrorViewControllerPreView: PreviewProvider {
+    static var previews: some View {
+        ErrorViewController().toPreview()
     }
 }
