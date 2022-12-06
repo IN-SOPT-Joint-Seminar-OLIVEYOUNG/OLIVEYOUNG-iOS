@@ -269,7 +269,7 @@ final class DetailViewController: UIViewController {
         "마스크팩"
     ]
     
-    private let detailProvider = MoyaProvider<SearchRouter>(plugins: [MoyaLoggingPlugin()])
+    private let detailProvider = MoyaProvider<DetailRouter>(plugins: [MoyaLoggingPlugin()])
     private var recommendList: [Recommend] = []
     private var relateList: [Recommend] = []
     
@@ -806,7 +806,7 @@ extension DetailViewController {
         purchaseView.backgroundColor = 0xa4d232.color
         tabbarButtonUnderlineView.backgroundColor = 0xebebeb.color
         tabbarButtonSelectedUnderlineView.backgroundColor = 0x2f2f2f.color
-        bottomContainerView.addBorder(toSide: .Top, withColor: color.cgColor(), andThickness: 1.0 )
+//        bottomContainerView.addBorder(toSide: .Top, withColor: color.cgColor(), andThickness: 1.0 )
     }
     
     private func configDelegate() {
@@ -836,8 +836,8 @@ extension DetailViewController {
     }
     
     // MARK: - Server Helpers
-    private func getSearch() {
-        detailProvider.request(.getSearch) { result in
+    private func getDetail() {
+        detailProvider.request(.getDetail) { result in
             switch result {
             case .success(let response):
                 let status = response.statusCode
@@ -872,7 +872,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == tagCollectionView {
             let tempLabel: UILabel = UILabel()
             tempLabel.text = tagList[indexPath.item]
-            return CGSize(width: tempLabel.intrinsicContentSize.width, height: 27)
+            return CGSize(width: tempLabel.intrinsicContentSize.width + 20, height: 27)
         } else if collectionView == recommendCollectionView {
             return CGSize(width: 105, height: 204)
         } else {
@@ -950,20 +950,20 @@ extension UIView {
         case Left, Right, Top, Bottom
     }
 
-    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
-
-        let border = CALayer()
-        border.backgroundColor = color
-
-        switch side {
-        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
-        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
-        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
-        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
-        }
-
-        layer.addSublayer(border)
-    }
+//    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+//
+//        let border = CALayer()
+//        border.backgroundColor = color
+//
+//        switch side {
+//        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+//        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+//        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+//        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+//        }
+//
+//        layer.addSublayer(border)
+//    }
 }
 
 
