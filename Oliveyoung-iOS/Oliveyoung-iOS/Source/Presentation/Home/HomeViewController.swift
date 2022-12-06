@@ -219,10 +219,16 @@ final class HomeViewController: UIViewController {
         config()
         register()
         configDelegate()
+        searchButton.addTarget(self, action: #selector(searchButtonDidTap), for: .touchUpInside)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func searchButtonDidTap() {
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 }
 
@@ -528,10 +534,15 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 1 {
-            self.navigationController?.pushViewController(CategoryDetailViewController(), animated: true)
-        }
-        else {
+        switch collectionView {
+        case menuCollectionView:
+            if indexPath.item == 1 {
+                self.navigationController?.pushViewController(CategoryDetailViewController(), animated: true)
+            }
+            else {
+                self.navigationController?.pushViewController(ErrorViewController(), animated: true)
+            }
+        default:
             self.navigationController?.pushViewController(ErrorViewController(), animated: true)
         }
     }

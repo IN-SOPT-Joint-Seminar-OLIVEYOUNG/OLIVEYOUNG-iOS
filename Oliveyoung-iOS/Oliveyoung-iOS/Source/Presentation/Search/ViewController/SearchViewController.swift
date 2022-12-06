@@ -69,10 +69,15 @@ final class SearchViewController: BaseViewController {
         
         getSearch()
         registerCollectionView()
+        searchView.navigationView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        searchView.navigationView.searchButton.addTarget(self, action: #selector(searchButtonDidTap), for: .touchUpInside)
     }
     
     @objc func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    @objc func searchButtonDidTap() {
+        self.navigationController?.pushViewController(ImageSearchResultViewController(), animated: true)
     }
     
 }

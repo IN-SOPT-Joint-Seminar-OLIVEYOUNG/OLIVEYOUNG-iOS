@@ -45,6 +45,7 @@ extension Const {
         static let mypage_icon_line = UIImage(named: "mypage_icon_line")
         static let mypage_icon = UIImage(named: "mypage_icon")
         static let categoryImage = UIImage(named: "categoryImage")
+        static let searchResultImg = UIImage(named: "searchResultImg")
         
     }
 }

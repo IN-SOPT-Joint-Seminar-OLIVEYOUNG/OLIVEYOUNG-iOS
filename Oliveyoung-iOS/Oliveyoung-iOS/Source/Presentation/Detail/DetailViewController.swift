@@ -55,6 +55,9 @@ final class DetailViewController: UIViewController {
     }()
     
     //MARK: - Components
+    private let productImage = UIImageView().then {
+        $0.image = UIImage(named: "detailMainImg")
+    }
     private let topContainerView = UIView()
     private let productImageContainerView = UIView()
     private let productContainerView = UIView()
@@ -254,15 +257,15 @@ final class DetailViewController: UIViewController {
     ]
     
     var recommendList: [recommendModel] = [
-        recommendModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "", price: "27,000"),
-        recommendModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "", price: "8,500"),
-        recommendModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "", price: "28,000")
+        recommendModel(name: "아이소이", description:"엔젤 아쿠아 수분 진정 크림 150ml모이스춰닥터 장/수/진 수분 앰플 기획" , productImage: "recomImg1", price: "27,000"),
+        recommendModel(name: "센카", description: "퍼펙트 휩 페이셜 위시 120g", productImage: "recomImg2", price: "8,500"),
+        recommendModel(name: "라운드랩", description: "1025 독도 앰플 45g", productImage: "recomImg3", price: "28,000")
         ]
     
     var relateList: [relateModel] = [
-        relateModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "", price: "27,000", discountRate: "23%"),
-        relateModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml ", productImage: "", price: "21,600", discountRate: "32%"),
-        relateModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "", price: "19,310", discountRate: "5%")
+        relateModel(name: "피지오겔", description: "[한정기획] AI크림 100ml 기획", productImage: "simImg1", price: "27,000", discountRate: "23%"),
+        relateModel(name: "에스트라", description: "아토베리어 365 하이드로 에센스 200ml", productImage: "simImg2", price: "21,600", discountRate: "32%"),
+        relateModel(name: "아벤느", description: "시칼파트플러스 크림 1+1 기획", productImage: "simImg3", price: "19,310", discountRate: "5%")
         
     ]
     
@@ -293,10 +296,15 @@ final class DetailViewController: UIViewController {
         viewConfig()
         isLikeTapped()
         tempConfig()
+        backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -310,7 +318,8 @@ extension DetailViewController {
         
         //components
         scrollView.addSubviews(
-            productImageContainerView,
+//            productImageContainerView,
+            productImage,
             productContainerView,
             productUnderlineView,
             deliveryContainerView,
@@ -409,14 +418,20 @@ extension DetailViewController {
             
         }
         
-        productImageContainerView.snp.makeConstraints {
+//        productImageContainerView.snp.makeConstraints {
+//            $0.top.equalToSuperview()
+//            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+//            $0.height.equalTo(246)
+//        }
+        productImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(246)
         }
         
         productContainerView.snp.makeConstraints {
-            $0.top.equalTo(productImageContainerView.snp.bottom).offset(25)
+//            $0.top.equalTo(productImageContainerView.snp.bottom).offset(25)
+            $0.top.equalTo(productImage.snp.bottom).offset(25)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
             $0.height.equalTo(292)

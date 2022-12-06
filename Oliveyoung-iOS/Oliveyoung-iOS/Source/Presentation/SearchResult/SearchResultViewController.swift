@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
-class SearchResultViewController: UIViewController, UICollectionViewDataSource {
+import SnapKit
+import Then
+
+class SearchResultViewController: UIViewController {
     
     var brandList: [BrandModel] = [
         BrandModel(Image: "drg", Brand: "비욘드"),
@@ -21,6 +25,10 @@ class SearchResultViewController: UIViewController, UICollectionViewDataSource {
         RecommendModel(Image: "bremish", Brand: "닥터지", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
         RecommendModel(Image: "oil", Brand: "닥터지", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
     ]
+    final let brandInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
+    final let brandInterItemSpacing : CGFloat = 12
+    final let detailInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 15)
+    final let detailInterItemSpacing : CGFloat = 15
     
     private lazy var navigationView = SearchNavigationView()
     
@@ -49,6 +57,9 @@ class SearchResultViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
+        setView()
+        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +87,21 @@ class SearchResultViewController: UIViewController, UICollectionViewDataSource {
     
 }
 
-extension SearchResultViewController: UICollectionViewDelegate {
+extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch collectionView {
+        case brandCollectionView:
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - brandInset.left - brandInset.right - brandInterItemSpacing
+            return CGSize(width: doubleCellWidth / 6, height: 76)
+        default:
+            let screenWidth = UIScreen.main.bounds.width
+            let doubleCellWidth = screenWidth - detailInset.left - detailInset.right - detailInterItemSpacing
+            return CGSize(width: doubleCellWidth / 3, height: 256)
+        }
+    }
+}
+extension SearchResultViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case brandCollectionView:
@@ -101,5 +126,15 @@ extension SearchResultViewController: UICollectionViewDelegate {
             detailCell.dataBind(model: detailList[indexPath.item])
             return detailCell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
+}
+
+struct SearchResultViewControllerPreView: PreviewProvider {
+    static var previews: some View {
+        SearchResultViewController().toPreview()
     }
 }

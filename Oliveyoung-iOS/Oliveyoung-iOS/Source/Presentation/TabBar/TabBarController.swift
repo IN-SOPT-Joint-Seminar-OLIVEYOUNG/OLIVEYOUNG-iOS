@@ -48,7 +48,8 @@ extension TabBarController {
         tabs = [
             HomeViewController(),
             SearchViewController(),
-            SearchResultViewController(),
+//            SearchResultViewController(),
+            ImageSearchResultViewController(),
             DetailViewController()
         ]
         

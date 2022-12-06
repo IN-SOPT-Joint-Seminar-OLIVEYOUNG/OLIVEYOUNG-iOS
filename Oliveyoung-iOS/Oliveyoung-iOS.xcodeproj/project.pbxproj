@@ -67,6 +67,7 @@
 		DD20A8DB2930C5F700001411 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20A8DA2930C5F700001411 /* TabBarController.swift */; };
 		DD20A8DD2930C60200001411 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20A8DC2930C60200001411 /* TabBarItem.swift */; };
 		DD20A8DF2930CF4900001411 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD20A8DE2930CF4900001411 /* BaseNavigationController.swift */; };
+		DD5B82BF2939C31C001E1904 /* ImageSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5B82BE2939C31C001E1904 /* ImageSearchResultViewController.swift */; };
 		DD76E6D0292B9CE90008A36C /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = DD76E6CF292B9CE90008A36C /* Moya */; };
 		DDB759F0292B88B800A419C0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB759EF292B88B800A419C0 /* UIColor+.swift */; };
 		DDC28C52292320E0003B87BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC28C51292320E0003B87BB /* AppDelegate.swift */; };
@@ -150,6 +151,7 @@
 		DD20A8DA2930C5F700001411 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DD20A8DC2930C60200001411 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		DD20A8DE2930CF4900001411 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		DD5B82BE2939C31C001E1904 /* ImageSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchResultViewController.swift; sourceTree = "<group>"; };
 		DDB759EF292B88B800A419C0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		DDC28C4E292320E0003B87BB /* Oliveyoung-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oliveyoung-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC28C51292320E0003B87BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			children = (
 				DD133D852938FB7400370CED /* ErrorViewController.swift */,
 				DD133D872939993E00370CED /* CategoryDetailViewController.swift */,
+				DD5B82BE2939C31C001E1904 /* ImageSearchResultViewController.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				DD20A8D62930A44500001411 /* NetworkBase.swift in Sources */,
 				DD00B8E9292B9AF50027AA2D /* SearchResultResponse.swift in Sources */,
 				DD20A8D82930A45500001411 /* NetworkResult.swift in Sources */,
+				DD5B82BF2939C31C001E1904 /* ImageSearchResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

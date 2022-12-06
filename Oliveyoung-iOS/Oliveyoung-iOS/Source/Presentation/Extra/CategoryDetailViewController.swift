@@ -13,8 +13,6 @@ import Then
 
 class CategoryDetailViewController: UIViewController {
     
-    static let identifier = "CategoryDetailViewController"
-    
     private let viewImage = UIImageView().then {
         $0.image = Const.Image.categoryImage
         $0.contentMode = .scaleAspectFill

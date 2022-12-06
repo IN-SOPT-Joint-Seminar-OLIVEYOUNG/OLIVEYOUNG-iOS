@@ -34,7 +34,7 @@ final class SearchNavigationView: BaseView {
         searchArea.addSubviews(searchBar, searchButton)
         searchHeader.addSubviews(backButton, searchArea)
         addSubview(searchHeader)
-        backButton.addTarget(self, action: #selector(SearchViewController.backButtonDidTap), for: .touchUpInside)
+//        backButton.addTarget(self, action: #selector(SearchViewController.backButtonDidTap), for: .touchUpInside)
     }
     
     override func setLayout() {
