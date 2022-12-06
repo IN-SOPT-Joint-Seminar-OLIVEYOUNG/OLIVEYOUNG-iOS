@@ -13,9 +13,30 @@ import SnapKit
 // MARK: - Component
 class SearchResultViewController: UIViewController {
 private lazy var containerView = UIScrollView()
-private let titleView = UIView()
+private lazy var titleView = SearchNavigationView()
+//private let titleView = UIView()
 private let indexView1 = UIView()
-private let indexView2 = UIView()
+    private let titleLabel = UILabel().then {
+        $0.text = "카테고리"
+        $0.font = .tittleSubhead1
+    }
+    private let category1 = UILabel().then {
+        $0.text = "토너/로션/올인원   에센스/크림   더모스코스케틱/스킨"
+        $0.font = .bodyBody5
+        $0.textColor = .systemGray
+        
+    }
+    private let indexView2 = UIView()
+        private let titleLabel2 = UILabel().then {
+            $0.text = "기능"
+            $0.font = .tittleSubhead1
+        }
+        private let category2 = UILabel().then {
+            $0.text = "미백  딥클렌징 안티에이징  필링  미백/주름개선   보습 "
+            $0.font = .bodyBody5
+            $0.textColor = .systemGray
+        }
+private let sectionView = UIView()
 private let brandTitle = UILabel().then {
     $0.text = "브랜드"
     $0.font = .tittleSubhead1
@@ -93,22 +114,27 @@ var ProductList: [resultProductModel] = [
  
     // MARK: - Constants
 final let productInset : UIEdgeInsets = UIEdgeInsets(top:0 , left:15 , bottom: 0, right: 15)
-final let productInterItemSpacing : CGFloat = 1
-final let productLineSpacing : CGFloat = 2
+final let productInterItemSpacing : CGFloat = 15
+final let productLineSpacing : CGFloat = 28
 final let productCellHeight : CGFloat = 200
-override func viewDidLoad() {
+    private func config() {
+        sectionView.backgroundColor = .systemGray4
+    }
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         layout()
-        config()
         register()
+        config()
     }
 }
+
+
 // MARK: - Extension
 extension SearchResultViewController {
     private func layout() {
         view.addSubview(containerView)
-        [titleView,indexView1,indexView2, brandTitle,brandCollectionView,producttopview,productCollectionView].forEach{containerView.addSubview($0)
+        [titleView,indexView1,indexView2,category1,category2,titleLabel,titleLabel2, brandTitle,brandCollectionView,producttopview,productCollectionView,sectionView].forEach{containerView.addSubview($0)
         }
         containerView.snp.makeConstraints { make in
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
@@ -119,13 +145,40 @@ extension SearchResultViewController {
             make.height.equalTo(36)
         }
         indexView1.snp.makeConstraints {make in
-                make.top.equalTo(self.titleView.snp.bottom)
+            make.top.equalTo(self.titleView.snp.bottom)
                 make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
                 make.height.equalTo(47)
                 }
+        titleLabel.snp.makeConstraints {make in
+                make.top.equalTo(self.titleView.snp.bottom).offset(10)
+            make.leading.equalTo(self.view.safeAreaLayoutGuide).offset(15)
+                make.height.equalTo(47)
+                }
+        category1.snp.makeConstraints {make in
+                make.top.equalTo(self.titleView.snp.bottom).offset(10)
+            make.leading.equalTo(self.titleLabel.snp.trailing).offset(15)
+                make.height.equalTo(47)
+                }
+        
         indexView2.snp.makeConstraints {make in
                 make.top.equalTo(self.indexView1.snp.bottom)
                 make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+                make.height.equalTo(47)
+                }
+        sectionView.snp.makeConstraints {make in
+                make.top.equalTo(self.indexView2.snp.bottom)
+                make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+                make.height.equalTo(10)
+                }
+        
+        titleLabel2.snp.makeConstraints {make in
+                make.top.equalTo(self.indexView1.snp.bottom).offset(10)
+            make.leading.equalTo(self.view.safeAreaLayoutGuide).offset(15)
+                make.height.equalTo(47)
+                }
+        category2.snp.makeConstraints {make in
+                make.top.equalTo(self.indexView1.snp.bottom).offset(10)
+            make.leading.equalTo(self.titleLabel.snp.trailing).offset(15)
                 make.height.equalTo(47)
                 }
         brandTitle.snp.makeConstraints{make in
@@ -187,11 +240,7 @@ productCollectionView.snp.makeConstraints {make in
         productCollectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier:
                                     ProductCollectionViewCell.identifier)
     }
-    private func config() {
-        titleView.backgroundColor = .red
-        indexView1.backgroundColor = .purple
-        indexView2.backgroundColor = .blue
-    }
+   
 }
 
 // MARK: - CollectionViewConstants
@@ -201,12 +250,12 @@ extension SearchResultViewController :
         switch collectionView {
         case brandCollectionView:
             let screenWidth = UIScreen.main.bounds.width
-            let doubleCellWidth = screenWidth - brandInset.left - brandInset.right - brandInterItemSpacing
-            return CGSize(width: doubleCellWidth / 6, height: 76)
+            let doubleCellWidth = screenWidth - brandInset.left - brandInset.right - brandInterItemSpacing*4
+            return CGSize(width: doubleCellWidth / 5, height: 76)
         case productCollectionView:
             let screenWidth = UIScreen.main.bounds.width
             let doubleCellWidth = screenWidth - productInset.left - productInset.right - productInterItemSpacing
-            return CGSize(width: doubleCellWidth / 3, height: 256)
+            return CGSize(width: doubleCellWidth / 2, height: 256)
             
         default:
             let screenWidth = UIScreen.main.bounds.width

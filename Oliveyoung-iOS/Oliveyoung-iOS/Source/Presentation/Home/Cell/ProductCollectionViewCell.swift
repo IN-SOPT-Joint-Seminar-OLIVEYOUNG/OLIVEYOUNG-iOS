@@ -61,13 +61,13 @@ extension ProductCollectionViewCell {
             $0.top.equalToSuperview().offset(8)
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(9)
-//            $0.height.equalTo(192)
+            $0.height.equalTo(256)
         }
         
         ImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.height.equalTo(120)
-            $0.width.equalTo(105)
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(184)
+//            $0.width.equalTo(105)
         }
         
         brandLabel.snp.makeConstraints {
