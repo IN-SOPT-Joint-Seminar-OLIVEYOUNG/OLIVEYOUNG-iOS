@@ -887,8 +887,8 @@ extension DetailViewController {
                 switch networkResult {
                 case .success(let data):
                     guard let data = data as? DetailMainResponse else { return }
-                    self.recommendList = data.recommend
-                    self.relateList = data.recommend
+//                    self.recommendList = data.recommend
+//                    self.relateList = data.recommend
                     self.recommendCollectionView.reloadData()
                 case .requestErr(_):
                     print("requestErr")

@@ -16,7 +16,7 @@ struct DetailMainResponse: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
     let product: Product
-    let recommends, similars: [Recommend]
+    let recommends, similars: [ResultRecommend]
 }
 
 // MARK: - Product
@@ -30,13 +30,13 @@ struct Product1: Codable {
     let reviewCount: String
 }
 
-//// MARK: - Recommend
-//struct Recommend: Codable {
-//    let brandName: String
-//    let mainImg: String
-//    let name, saledPrice: String
-//    let salePercent: String?
-//}
+// MARK: - Recommend
+struct ResultRecommend: Codable {
+    let brandName: String
+    let mainImg: String
+    let name, saledPrice: String
+    let salePercent: String?
+}
 
 //// MARK: - Relate
 //struct Relate: Codable {

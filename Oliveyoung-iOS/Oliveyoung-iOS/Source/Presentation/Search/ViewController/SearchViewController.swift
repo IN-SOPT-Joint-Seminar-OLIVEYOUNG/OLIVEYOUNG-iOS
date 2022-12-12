@@ -19,10 +19,10 @@ final class SearchViewController: BaseViewController {
     private var recommendList: [Product] = []
     private var recentWordList: [String] = Word.setRecentWordDummy()
     private var popularWordDummy = Word.popularWordDummy()
-    private var recommendDummyList: [RecommendModel] = [
-        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+    private var recommendDummyList: [Recommend] = [
+        Recommend(brandName: "비욘드", mainImg: "beyond", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,800원", salePercent: "16%"),
+        Recommend(brandName: "힌스", mainImg: "hince", name: "무드 인핸서 마뜨", saledPrice: "12,321원", salePercent: "32%"),
+        Recommend(brandName: "3CE", mainImg: "3ce", name: "치명립스틱", saledPrice: "60,000원", salePercent: "16%")
         
     ]
     

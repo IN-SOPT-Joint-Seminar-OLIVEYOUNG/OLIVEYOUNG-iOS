@@ -110,12 +110,12 @@ extension relateCollectionViewCell {
     
     //MARK: - General Helpers
     
-    func dataBind(model: Recommend) {
-        productImageView.image = UIImage(named: model.mainImg)
-        productLabel.text = model.brandName
-        descriptionLabel.text = model.name
-        priceLabel.text = model.saledPrice
-        discountLabel.text = model.salePercent
+    func dataBind(model: relateModel) {
+        productImageView.image = UIImage(named: model.productImage)
+        productLabel.text = model.name
+        descriptionLabel.text = model.description
+        priceLabel.text = model.price
+        discountLabel.text = model.price
     }
     
 }
