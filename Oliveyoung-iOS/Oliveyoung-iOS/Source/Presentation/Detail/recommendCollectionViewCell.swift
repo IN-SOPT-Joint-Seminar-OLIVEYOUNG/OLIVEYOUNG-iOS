@@ -11,7 +11,7 @@ import Then
 import SnapKit
 import SwiftyColor
 
-//MARK: - ProductCollectionViewCell
+//MARK: - recommendCollectionViewCell
 final class recommendCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
@@ -43,8 +43,13 @@ final class recommendCollectionViewCell: UICollectionViewCell {
         $0.text = "원"
     }
     
+    private let discountLabel = UILabel().then {
+        $0.font = .bodyBody2
+        $0.textColor = 0xf87171.color
+    }
+    
     //MARK: - Identifier
-    static let identifier = "ProductCollectionViewCell"
+    static let identifier = "recommendCollectionViewCell"
     
     //MARK: - Life Cycles
     override init(frame: CGRect) {
@@ -99,11 +104,12 @@ extension recommendCollectionViewCell {
     
     //MARK: - General Helpers
     
-    func dataBind(model: recommendModel) {
-        productImageView.image = UIImage(named: model.productImage)
-        productLabel.text = model.name
-        descriptionLabel.text = model.description
-        priceLabel.text = model.price
+    func dataBind(model: Recommend) {
+        productImageView.image = UIImage(named: model.mainImg)
+        productLabel.text = model.brandName
+        descriptionLabel.text = model.name
+        priceLabel.text = model.saledPrice
+        discountLabel.text = model.salePercent
     }
     
 }

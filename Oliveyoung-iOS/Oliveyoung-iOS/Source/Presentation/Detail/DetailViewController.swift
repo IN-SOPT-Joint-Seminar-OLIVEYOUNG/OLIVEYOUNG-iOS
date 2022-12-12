@@ -11,6 +11,7 @@ import SwiftUI
 import Then
 import SnapKit
 import SwiftyColor
+import Moya
 
 //MARK: - DetailViewController
 final class DetailViewController: UIViewController {
@@ -68,8 +69,7 @@ final class DetailViewController: UIViewController {
     private let recommendContainerView = UIView()
     private let relatedProductContainerView = UIView()
     private let bottomContainerView = UIView().then {
-        $0.borderWidth = 1
-        $0.borderColor = 0xebebeb.color
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     private let productUnderlineView = UIView()
@@ -244,7 +244,6 @@ final class DetailViewController: UIViewController {
     private let productImageView = UIImageView(image: UIImage(named: "detailView"))
     private let searchGreenImageView = UIImageView(image: UIImage(named: "searchIcon_green12X12"))
 
-    
     //MARK: - Variables
     var isSelected = true
     
@@ -284,6 +283,19 @@ final class DetailViewController: UIViewController {
     final let relateLineSpacing: CGFloat = 0
     final let relateInterItemSpacing: CGFloat = 15
     final let relateCellHeight: CGFloat = 148
+    
+    //MARK: - Property
+    var tagList = [
+        "립밤",
+        "핸드크림",
+        "틴트",
+        "쿠션",
+        "마스크팩"
+    ]
+    
+    private let detailProvider = MoyaProvider<DetailRouter>(plugins: [MoyaLoggingPlugin()])
+    private var recommendList: [Recommend] = []
+    private var relateList: [Recommend] = []
     
     //MARK: - Life Cycles
     override func viewDidLoad() {
@@ -835,6 +847,7 @@ extension DetailViewController {
         purchaseView.backgroundColor = 0xa4d232.color
         tabbarButtonUnderlineView.backgroundColor = 0xebebeb.color
         tabbarButtonSelectedUnderlineView.backgroundColor = 0x2f2f2f.color
+//        bottomContainerView.addBorder(toSide: .Top, withColor: color.cgColor(), andThickness: 1.0 )
     }
     
     private func configDelegate() {
@@ -852,18 +865,6 @@ extension DetailViewController {
         relateCollectionView.register(relateCollectionViewCell.self, forCellWithReuseIdentifier: relateCollectionViewCell.identifier)
     }
     
-    private func tempConfig() {
-        productImageContainerView.backgroundColor = .systemGray4
-        //        productContainerView.backgroundColor = .red
-        //        deliveryContainerView.backgroundColor = .systemOrange
-        //        availableStoreContainerView.backgroundColor = .systemYellow
-        //        tabbarButtonContainerView.backgroundColor = .systemGreen
-        //        productDetailContainerView.backgroundColor = .systemBlue
-        //        recommendContainerView.backgroundColor = .systemPurple
-        //        relatedProductContainerView.backgroundColor = .systemCyan
-        //        bottomContainerView.backgroundColor = .systemGray6
-    }
-    
     //MARK: - Action Helpers
     private func isLikeTapped() {
         if  likeButton.isSelected == true {
@@ -874,6 +875,36 @@ extension DetailViewController {
             likeButton.setImage(UIImage(named: "property1Like24X24"), for: .normal)
         }
     }
+    
+    // MARK: - Server Helpers
+    private func getDetail() {
+        detailProvider.request(.getDetail) { result in
+            switch result {
+            case .success(let response):
+                let status = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: status, data, DetailMainResponse.self)
+                switch networkResult {
+                case .success(let data):
+                    guard let data = data as? DetailMainResponse else { return }
+                    self.recommendList = data.recommend
+                    self.relateList = data.recommend
+                    self.recommendCollectionView.reloadData()
+                case .requestErr(_):
+                    print("requestErr")
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -943,7 +974,7 @@ extension DetailViewController: UICollectionViewDataSource {
         } else if collectionView == recommendCollectionView {
             guard let recommendCell = collectionView.dequeueReusableCell(withReuseIdentifier: recommendCollectionViewCell.identifier, for: indexPath) as?
                     recommendCollectionViewCell else { return UICollectionViewCell() }
-            recommendCell.dataBind(model: recommendList[indexPath.item])
+            recommendCell.dataBind(model: recommendList[indexPath.item] )
             return recommendCell
         } else {
             guard let relateCell = collectionView.dequeueReusableCell(withReuseIdentifier: relateCollectionViewCell.identifier, for: indexPath) as?
@@ -954,8 +985,31 @@ extension DetailViewController: UICollectionViewDataSource {
     }
 }
 
-struct DetailViewControllerPreView:PreviewProvider {
-    static var previews: some View {
-        DetailViewController().toPreview()
+extension UIView {
+
+    enum ViewSide {
+        case Left, Right, Top, Bottom
     }
+
+//    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+//
+//        let border = CALayer()
+//        border.backgroundColor = color
+//
+//        switch side {
+//        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+//        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+//        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+//        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+//        }
+//
+//        layer.addSublayer(border)
+//    }
 }
+
+
+//struct DetailViewControllerPreView:PreviewProvider {
+//    static var previews: some View {
+//        DetailViewController().toPreview()
+//    }
+//}
