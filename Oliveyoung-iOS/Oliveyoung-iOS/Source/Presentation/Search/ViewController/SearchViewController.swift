@@ -17,8 +17,14 @@ final class SearchViewController: BaseViewController {
     // MARK: - Property
     private let searchProvider = MoyaProvider<SearchRouter>(plugins: [MoyaLoggingPlugin()])
     private var recommendList: [Product] = []
-    private var recentWordList: [String] = []
+    private var recentWordList: [String] = Word.setRecentWordDummy()
     private var popularWordDummy = Word.popularWordDummy()
+    private var recommendDummyList: [RecommendModel] = [
+        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+        
+    ]
     
     // MARK: - Component
     private lazy var searchView = SearchView()
@@ -38,6 +44,7 @@ final class SearchViewController: BaseViewController {
                     self.recentWordList = data.recentWords
                     self.searchView.collectionView.reloadData()
                 case .requestErr(_):
+                    self.recentWordList = Word.setRecentWordDummy()
                     print("requestErr")
                 case .pathErr:
                     print("pathErr")
@@ -55,15 +62,22 @@ final class SearchViewController: BaseViewController {
     // MARK: - LifeCycle
     override func loadView() {
         self.view = searchView
-        
-        getSearch()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        getSearch()
+        getSearch()
         registerCollectionView()
+        searchView.navigationView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        searchView.navigationView.searchButton.addTarget(self, action: #selector(searchButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @objc func searchButtonDidTap() {
+        self.navigationController?.pushViewController(ImageSearchResultViewController(), animated: true)
     }
     
 }
@@ -92,7 +106,7 @@ extension SearchViewController: UICollectionViewDataSource {
         case 1:
             return popularWordDummy.count
         default:
-            return recommendList.count
+            return recommendDummyList.count
         }
     }
     
@@ -101,7 +115,6 @@ extension SearchViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.RecentWordCollectionViewCell, for: indexPath) as? RecentWordCollectionViewCell else { return UICollectionViewCell() }
-//            print("💗cell \(cell)")
             cell.configureUI(word: recentWordList[indexPath.row])
             return cell
         case 1:
@@ -110,7 +123,7 @@ extension SearchViewController: UICollectionViewDataSource {
             return cell
         default:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath) as? ReccomendCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureUI(product: recommendList[indexPath.row])
+            cell.dataBind(model: recommendDummyList[indexPath.row])
             return cell
         }
     }
@@ -161,8 +174,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//struct SearchViewControllerPreView:PreviewProvider {
-//    static var previews: some View {
-//        SearchViewController().toPreview()
-//    }
-//}
+struct SearchViewControllerPreView: PreviewProvider {
+    static var previews: some View {
+        SearchViewController().toPreview()
+    }
+}

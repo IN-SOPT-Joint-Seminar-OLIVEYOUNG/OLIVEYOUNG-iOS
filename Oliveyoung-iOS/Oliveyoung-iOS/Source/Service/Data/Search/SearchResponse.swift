@@ -25,6 +25,9 @@ struct Word {
 }
 
 extension Word {
+    static func setRecentWordDummy() -> [String] {
+        return ["립밤", "핸드크림", "썬쿠션", "틴트"]
+    }
     static func recentWordDummy() -> [Word] {
         return [
             Word(word: "립밤"),
