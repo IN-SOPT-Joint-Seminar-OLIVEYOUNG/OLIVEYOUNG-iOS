@@ -38,9 +38,6 @@ extension TabBarController {
     private func setTabBarAppearance() {
         UITabBar.appearance().tintColor = .willaGrayGray500
         tabBar.barTintColor = .white
-
-//        tabBar.layer.borderWidth = 0.5
-//        tabBar.layer.borderColor = UIColor.willaGrayGray500.cgColor
     }
     
     private func setTabBarItems() {
@@ -48,8 +45,7 @@ extension TabBarController {
         tabs = [
             HomeViewController(),
             SearchViewController(),
-//            SearchResultViewController(),
-            ImageSearchResultViewController(),
+            SearchResultViewController(),
             DetailViewController()
         ]
         

@@ -76,7 +76,7 @@ final class SearchViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @objc func searchButtonDidTap() {
-        self.navigationController?.pushViewController(ImageSearchResultViewController(), animated: true)
+        self.navigationController?.pushViewController(SearchResultViewController(), animated: true)
     }
     
 }
