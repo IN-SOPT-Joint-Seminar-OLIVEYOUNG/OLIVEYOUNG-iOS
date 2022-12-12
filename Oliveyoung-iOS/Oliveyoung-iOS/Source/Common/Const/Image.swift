@@ -37,6 +37,15 @@ extension Const {
         static let chevron12X12 = UIImage(named: "chevron12X12")
         static let chevron14X14 = UIImage(named: "chevron14X14")
         static let uncheckedbox = UIImage(named: "uncheckedbox")
+        static let category_icon = UIImage(named: "category_icon")
+        static let hoem_icon = UIImage(named: "hoem_icon")
+        static let home_icon_line = UIImage(named: "home_icon_line")
+        static let like_icon_line = UIImage(named: "like_icon_line")
+        static let like_icon = UIImage(named: "like_icon")
+        static let mypage_icon_line = UIImage(named: "mypage_icon_line")
+        static let mypage_icon = UIImage(named: "mypage_icon")
+        static let categoryImage = UIImage(named: "categoryImage")
+        static let searchResultImg = UIImage(named: "searchResultImg")
         
     }
 }

@@ -9,7 +9,6 @@ import UIKit
 import SwiftUI
 
 import Then
-import Moya
 import SnapKit
 
 final class HomeViewController: UIViewController {
@@ -86,50 +85,11 @@ final class HomeViewController: UIViewController {
     }()
     
 
-    // MARK: - Property
-
-    private let homeProvider = MoyaProvider<HomeRouter>(plugins: [MoyaLoggingPlugin()])
-    private var recommendList: [Recommend] = []
-//    private var recentWordList: [String] = []
-//    private var popularWordDummy = Word.popularWordDummy()
-    
-    
-    // MARK: - Server Helpers
-    private func getRecommend() {
-        homeProvider.request(.getRecommemd) { result in
-            switch result {
-            case .success(let response):
-                let status = response.statusCode
-                switch status {
-                case 200:
-                    do {
-                        let result = try response.map(PickedProductList.self)
-                        for dto in result.data {
-                            self.recommendList.append(dto.convertToRecommend())
-                        }
-                        self.recommendCollectionView.reloadData()
-                    }
-                    catch(let error) {
-                        print(error.localizedDescription)
-                    }
-                case 201..<400:
-                    print("Error")
-                case 400..<500:
-                    print("Client Error")
-                case 500..<600:
-                    print("Server Error")
-                default:
-                    print("Default Error")
-                }
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     
     //MARK: - Variables
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
     var menuList: [MenuModel] = [
         MenuModel(menuImage: "Rectangle 29", name: "카테고리"),
         MenuModel(menuImage: "col_2", name: "스킨케어"),
@@ -144,12 +104,11 @@ final class HomeViewController: UIViewController {
     ]
     var tabList: [TabModel] = [
         TabModel(Name: "추천"),TabModel(Name: "특가"),TabModel(Name: "랭킹"),TabModel(Name: "이벤트"),TabModel(Name: "세일") ]
-//    var recommendList: [RecommendModel] = [
-//        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-//        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-//        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
-//
-//       ]
+    var recommendList: [Recommend] = [
+        Recommend(brandName: "비욘드", mainImg: "beyond", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "힌스", mainImg: "hince", name: "무드 인핸서 마뜨", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "3CE", mainImg: "3ce", name: "치명립스틱", saledPrice: "20,000원", salePercent: "16%")
+    ]
     var brandList: [BrandModel] = [
         BrandModel(Image: "drg", Brand: "비욘드"),
         BrandModel(Image: "urage", Brand: "유리아주"),
@@ -157,10 +116,10 @@ final class HomeViewController: UIViewController {
         BrandModel(Image: "innerlab", Brand: "이너랩"),
         BrandModel(Image: "freemay", Brand: "프리메이"),
        ]
-    var DetailList: [RecommendModel] = [
-        RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-        RecommendModel(Image: "bremish", Brand: "닥터지", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-        RecommendModel(Image: "oil", Brand: "닥터지", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+    var DetailList: [Recommend] = [
+        Recommend(brandName: "비욘드", mainImg: "drg_big", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "비욘드", mainImg: "bremish", name: "무드 인핸서 마뜨", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "비욘드", mainImg: "oil", name: "치명립스틱", saledPrice: "20,000원", salePercent: "16%")
        ]
     
     
@@ -252,20 +211,23 @@ final class HomeViewController: UIViewController {
         $0.image = UIImage(named: "Frame 302")
     }
     // MARK: - LifeCycles
-    override func loadView() {
-        
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .white
-        
-        getRecommend()
+        view.backgroundColor = .white
         layout()
         config()
         register()
         configDelegate()
+        searchButton.addTarget(self, action: #selector(searchButtonDidTap), for: .touchUpInside)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func searchButtonDidTap() {
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 }
 
@@ -304,19 +266,19 @@ extension HomeViewController {
             make.trailing.equalToSuperview().inset(24)
         }
         tabCollectionView.snp.makeConstraints {make in
-            make.top.equalTo(self.titleView.snp.bottom).offset(20)
+            make.top.equalTo(self.titleView.snp.bottom).offset(12)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(20)
         }
         adImageView.snp.makeConstraints{make in
-            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(16)
+            make.top.equalTo(self.tabCollectionView.snp.bottom).offset(12)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(216)
         }
         menuCollectionView.snp.makeConstraints {make in
             make.top.equalTo(self.adImageView.snp.bottom).offset(13)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            make.height.equalTo(166)
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(180)
         }
         recommendViewTitle.snp.makeConstraints {make in
             make.top.equalTo(self.menuCollectionView.snp.bottom).offset(48)
@@ -353,7 +315,7 @@ extension HomeViewController {
             make.height.equalTo(192)
         }
         onlyViewTitle.snp.makeConstraints {make in
-            make.top.equalTo(self.detailCollectionView.snp.bottom).offset(40)
+            make.top.equalTo(self.detailCollectionView.snp.bottom).offset(48)
             make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(15)
             make.height.equalTo(19)
         }
@@ -420,14 +382,8 @@ extension HomeViewController {
                                     BrandCollectionViewCell.identifier)
         detailCollectionView.register(ReccomendCollectionViewCell.self, forCellWithReuseIdentifier:
                                     ReccomendCollectionViewCell.identifier)
+        
     }
-    
-//    func dataBind(model: Recommend) {
-//            titleLabel.text = model.title
-//            singerLabel.text = model.singer
-////            guard let url = URL(string: model.albumImage) else { return }
-////            albumImageView.kf.setImage(with: url)
-//        }
     
     private func configDelegate() {
         menuCollectionView.delegate = self
@@ -450,9 +406,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case menuCollectionView:
-            let screenWidth = UIScreen.main.bounds.width
             let menudoubleCellWidth = screenWidth - menuInset.left - menuInset.right - menuInterItemSpacing
-            return CGSize(width: menudoubleCellWidth / 6, height: 75)
+            return CGSize(width: menudoubleCellWidth / 6, height: (menudoubleCellWidth / 6) * 1.3)
         case tabCollectionView:
             let screenWidth = UIScreen.main.bounds.width
             let tabdoubleCellWidth = screenWidth - tabInset.left - tabInset.right - tabInterItemSpacing
@@ -478,7 +433,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             switch collectionView{
             case menuCollectionView:
-                return menuLineSpacing
+                return 16
             case tabCollectionView:
                 return tabLineSpacing
             case recommendCollectionView:
@@ -494,7 +449,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             switch collectionView{
             case menuCollectionView:
-                return menuInterItemSpacing
+                return 4
             case tabCollectionView:
                 return tabInterItemSpacing
             case recommendCollectionView:
@@ -510,7 +465,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             switch collectionView{
             case menuCollectionView:
-                return menuInset
+                return UIEdgeInsets(top:0 , left:0 , bottom: 0, right: 0)
             case tabCollectionView:
                 return tabInset
             case recommendCollectionView:
@@ -557,7 +512,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case recommendCollectionView:
             guard let recCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
                     as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
-            recCell.dataBind(model:recommendList[indexPath.item])
+            recCell.dataBind(model: recommendList[indexPath.item])
             return recCell
         case brandCollectionView:
             guard let brandCell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath)
@@ -568,7 +523,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case detailCollectionView:
             guard let detailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
                     as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
-            detailCell.dataBind(model: recommendList[indexPath.item])
+            detailCell.dataBind(model: DetailList[indexPath.item])
             return detailCell
         default:
             guard let tabCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCollectionViewCell.identifier, for: indexPath)
@@ -577,6 +532,20 @@ extension HomeViewController: UICollectionViewDataSource {
             return tabCell
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case menuCollectionView:
+            if indexPath.item == 1 {
+                self.navigationController?.pushViewController(CategoryDetailViewController(), animated: true)
+            }
+            else {
+                self.navigationController?.pushViewController(ErrorViewController(), animated: true)
+            }
+        default:
+            self.navigationController?.pushViewController(ErrorViewController(), animated: true)
+        }
+    }
+    
 }
 struct HomeViewControllerPreView:PreviewProvider {
     static var previews: some View {
