@@ -11,7 +11,7 @@ import Then
 import SnapKit
 import SwiftyColor
 
-//MARK: - ProductCollectionViewCell
+//MARK: - relateCollectionViewCell
 final class relateCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
@@ -115,7 +115,7 @@ extension relateCollectionViewCell {
         productLabel.text = model.name
         descriptionLabel.text = model.description
         priceLabel.text = model.price
-        discountLabel.text = model.discountRate
+        discountLabel.text = model.price
     }
     
 }

@@ -43,7 +43,6 @@ class ImageSearchResultViewController: UIViewController {
     }
     
     @objc func imageDidTap(sender: UITapGestureRecognizer) {
-        print("이미지 클릭")
         self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
     
