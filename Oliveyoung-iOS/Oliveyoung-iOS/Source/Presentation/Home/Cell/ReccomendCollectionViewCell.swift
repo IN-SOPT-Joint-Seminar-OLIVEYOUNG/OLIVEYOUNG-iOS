@@ -102,6 +102,10 @@ extension ReccomendCollectionViewCell {
     }
 //brandName: self.brandName, mainImg: self.mainImg, name: self.name, saledPrice: self.saledPrice, salePercent: self.salePercent
     func dataBind(model: Recommend) {
-       
+        brandLabel.text = model.brandName
+        nameLabel.text = model.name
+        ImageView.image = UIImage(named: model.mainImg)
+        price.text = model.saledPrice
+        percent.text = model.salePercent
     }
 }

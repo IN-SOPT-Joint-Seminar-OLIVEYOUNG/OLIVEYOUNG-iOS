@@ -20,10 +20,9 @@ final class SearchViewController: BaseViewController {
     private var recentWordList: [String] = Word.setRecentWordDummy()
     private var popularWordDummy = Word.popularWordDummy()
     private var recommendDummyList: [Recommend] = [
-        Recommend(brandName: "비욘드", mainImg: "beyond", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,800원", salePercent: "16%"),
-        Recommend(brandName: "힌스", mainImg: "hince", name: "무드 인핸서 마뜨", saledPrice: "12,321원", salePercent: "32%"),
-        Recommend(brandName: "3CE", mainImg: "3ce", name: "치명립스틱", saledPrice: "60,000원", salePercent: "16%")
-        
+        Recommend(brandName: "비욘드", mainImg: "beyond", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "힌스", mainImg: "hince", name: "무드 인핸서 마뜨", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "3CE", mainImg: "3ce", name: "치명립스틱", saledPrice: "20,000원", salePercent: "16%")
     ]
     
     // MARK: - Component
