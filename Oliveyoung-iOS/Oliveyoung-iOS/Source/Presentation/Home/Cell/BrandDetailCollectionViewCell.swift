@@ -81,11 +81,11 @@ extension BrandDetailCollectionViewCell {
     
     // MARK: - General Helpers
     
-    func dataBind(model: RecommendModel) {
-        brandLabel.text = model.Brand
-        nameLabel.text = model.Name
-        ImageView.image = UIImage(named: model.Image)
-        price.text = model.Price
-        percent.text = model.Percent
+    func dataBind(model: Recommend) {
+        brandLabel.text = model.brandName
+        nameLabel.text = model.name
+        ImageView.image = UIImage(named: model.mainImg)
+        price.text = model.saledPrice
+        percent.text = model.salePercent
     }
 }
