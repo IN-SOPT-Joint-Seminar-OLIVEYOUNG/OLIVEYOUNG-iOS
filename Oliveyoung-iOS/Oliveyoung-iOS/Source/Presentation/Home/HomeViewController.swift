@@ -89,7 +89,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Property
 
     private let homeProvider = MoyaProvider<HomeRouter>(plugins: [MoyaLoggingPlugin()])
-    private var recommendList: [Recommend] = []
+//    private var recommendList: [Recommend] = []
 //    private var recentWordList: [String] = []
 //    private var popularWordDummy = Word.popularWordDummy()
     
@@ -147,12 +147,12 @@ final class HomeViewController: UIViewController {
     ]
     var tabList: [TabModel] = [
         TabModel(Name: "추천"),TabModel(Name: "특가"),TabModel(Name: "랭킹"),TabModel(Name: "이벤트"),TabModel(Name: "세일") ]
-//    var recommendList: [RecommendModel] = [
-//        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-//        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-//        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
-//
-//       ]
+    var recommendList: [RecommendModel] = [
+        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
+        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
+        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+
+       ]
     var brandList: [BrandModel] = [
         BrandModel(Image: "drg", Brand: "비욘드"),
         BrandModel(Image: "urage", Brand: "유리아주"),

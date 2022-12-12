@@ -30,13 +30,13 @@ struct Product1: Codable {
     let reviewCount: String
 }
 
-// MARK: - Recommend
-struct Recommend: Codable {
-    let brandName: String
-    let mainImg: String
-    let name, saledPrice: String
-    let salePercent: String?
-}
+//// MARK: - Recommend
+//struct Recommend: Codable {
+//    let brandName: String
+//    let mainImg: String
+//    let name, saledPrice: String
+//    let salePercent: String?
+//}
 
 //// MARK: - Relate
 //struct Relate: Codable {

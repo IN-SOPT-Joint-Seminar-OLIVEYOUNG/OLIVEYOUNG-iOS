@@ -285,17 +285,17 @@ final class DetailViewController: UIViewController {
     final let relateCellHeight: CGFloat = 148
     
     //MARK: - Property
-    var tagList = [
-        "립밤",
-        "핸드크림",
-        "틴트",
-        "쿠션",
-        "마스크팩"
-    ]
+//    var tagList = [
+//        "립밤",
+//        "핸드크림",
+//        "틴트",
+//        "쿠션",
+//        "마스크팩"
+//    ]
     
     private let detailProvider = MoyaProvider<DetailRouter>(plugins: [MoyaLoggingPlugin()])
-    private var recommendList: [Recommend] = []
-    private var relateList: [Recommend] = []
+//    private var recommendList: [Recommend] = []
+//    private var relateList: [Recommend] = []
     
     //MARK: - Life Cycles
     override func viewDidLoad() {
@@ -307,7 +307,7 @@ final class DetailViewController: UIViewController {
         buttonConfig()
         viewConfig()
         isLikeTapped()
-        tempConfig()
+//        tempConfig()
         backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
