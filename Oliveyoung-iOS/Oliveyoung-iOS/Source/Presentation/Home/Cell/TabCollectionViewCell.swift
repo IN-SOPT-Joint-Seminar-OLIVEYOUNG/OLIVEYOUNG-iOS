@@ -13,7 +13,7 @@ class TabCollectionViewCell: UICollectionViewCell {
     static let identifier = "TabCollectionViewCell"
     private let tabLabel = UILabel().then{
         $0.font = .tittleSubhead1
-        $0.textColor = .black
+        $0.textColor = .systemGray2
     }
 //MARK: - Life Cycle
     override init(frame : CGRect){

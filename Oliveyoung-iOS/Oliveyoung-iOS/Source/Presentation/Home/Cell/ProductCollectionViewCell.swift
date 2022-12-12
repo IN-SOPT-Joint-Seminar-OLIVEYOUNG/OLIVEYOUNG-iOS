@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 
-class BrandDetailCollectionViewCell: UICollectionViewCell {
-    static let identifier = "BrandDetailCollectionViewCell"
+import Kingfisher
+
+class ProductCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ProductCollectionViewCell"
+    
     private let ContainerView = UIView()
     private let ImageView = UIImageView()
     private let brandLabel = UILabel().then{
@@ -42,7 +45,7 @@ class BrandDetailCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Extensions
 
-extension BrandDetailCollectionViewCell {
+extension ProductCollectionViewCell {
     
     // MARK: - Layout Helpers
     
@@ -52,19 +55,26 @@ extension BrandDetailCollectionViewCell {
         [ContainerView,ImageView,brandLabel,nameLabel,price,percent].forEach {
             contentView.addSubview($0)
         }
+        
+//        ContainerView.addSubview(ImageView)
         ContainerView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(9)
+            $0.height.equalTo(256)
         }
+        
         ImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(120)
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(184)
+//            $0.width.equalTo(105)
         }
+        
         brandLabel.snp.makeConstraints {
             $0.top.equalTo(ImageView.snp.bottom).offset(8)
             $0.leading.equalTo(self.ContainerView.snp.leading)
         }
+        
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(brandLabel.snp.bottom).offset(8)
             $0.leading.equalTo(self.ContainerView.snp.leading)
@@ -77,15 +87,25 @@ extension BrandDetailCollectionViewCell {
             $0.top.equalTo(nameLabel.snp.bottom).offset(8)
             $0.trailing.equalTo(self.ContainerView.snp.trailing)
         }
+        
+        
     }
     
-    // MARK: - General Helpers
-    
-    func dataBind(model: Recommend) {
-        brandLabel.text = model.brandName
-        nameLabel.text = model.name
-        ImageView.image = UIImage(named: model.mainImg)
-        price.text = model.saledPrice
-        percent.text = model.salePercent
+//    // MARK: - General Helpers
+//    func configureUI(product: Product) {
+//        brandLabel.text = product.brandName
+//        nameLabel.text = product.name
+//        price.text = product.saledPrice
+//        percent.text = product.salePercent
+//        guard let url = URL(string: product.mainImg) else { return }
+//        ImageView.kf.setImage(with: url)
+//    }
+//brandName: self.brandName, mainImg: self.mainImg, name: self.name, saledPrice: self.saledPrice, salePercent: self.salePercent
+    func dataBind(model: resultProductModel) {
+        brandLabel.text = model.Brand
+        nameLabel.text = model.Name
+        ImageView.image = UIImage(named: model.Image)
+        price.text = model.Price
+        percent.text = model.Percent
     }
 }

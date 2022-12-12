@@ -100,12 +100,12 @@ extension ReccomendCollectionViewCell {
         guard let url = URL(string: product.mainImg) else { return }
         ImageView.kf.setImage(with: url)
     }
-    
-    func dataBind(model: RecommendModel) {
-        brandLabel.text = model.Brand
-        nameLabel.text = model.Name
-        ImageView.image = UIImage(named: model.Image)
-        price.text = model.Price
-        percent.text = model.Percent
+//brandName: self.brandName, mainImg: self.mainImg, name: self.name, saledPrice: self.saledPrice, salePercent: self.salePercent
+    func dataBind(model: Recommend) {
+        brandLabel.text = model.brandName
+        nameLabel.text = model.name
+        ImageView.image = UIImage(named: model.mainImg)
+        price.text = model.saledPrice
+        percent.text = model.salePercent
     }
 }

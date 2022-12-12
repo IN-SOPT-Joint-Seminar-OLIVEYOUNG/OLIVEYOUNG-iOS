@@ -104,12 +104,11 @@ final class HomeViewController: UIViewController {
     ]
     var tabList: [TabModel] = [
         TabModel(Name: "추천"),TabModel(Name: "특가"),TabModel(Name: "랭킹"),TabModel(Name: "이벤트"),TabModel(Name: "세일") ]
-    var recommendList: [RecommendModel] = [
-        RecommendModel(Image: "beyond", Brand: "비욘드", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-        RecommendModel(Image: "hince", Brand: "힌스", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-        RecommendModel(Image: "3ce", Brand: "3CE", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
-
-       ]
+    var recommendList: [Recommend] = [
+        Recommend(brandName: "비욘드", mainImg: "beyond", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "힌스", mainImg: "hince", name: "무드 인핸서 마뜨", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "3CE", mainImg: "3ce", name: "치명립스틱", saledPrice: "20,000원", salePercent: "16%")
+    ]
     var brandList: [BrandModel] = [
         BrandModel(Image: "drg", Brand: "비욘드"),
         BrandModel(Image: "urage", Brand: "유리아주"),
@@ -117,10 +116,10 @@ final class HomeViewController: UIViewController {
         BrandModel(Image: "innerlab", Brand: "이너랩"),
         BrandModel(Image: "freemay", Brand: "프리메이"),
        ]
-    var DetailList: [RecommendModel] = [
-        RecommendModel(Image: "drg_big", Brand: "닥터지", Name: "엔젤 아쿠아 수분 진정 크림",Price: "20,800원",Percent: "16%"),
-        RecommendModel(Image: "bremish", Brand: "닥터지", Name: "무드 인핸서 마뜨",Price: "12,321원",Percent: "32%"),
-        RecommendModel(Image: "oil", Brand: "닥터지", Name: "치명립스틱",Price: "60,000원",Percent: "16%"),
+    var DetailList: [Recommend] = [
+        Recommend(brandName: "비욘드", mainImg: "drg_big", name: "엔젤 아쿠아 수분 진정 크림", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "비욘드", mainImg: "bremish", name: "무드 인핸서 마뜨", saledPrice: "20,000원", salePercent: "16%"),
+        Recommend(brandName: "비욘드", mainImg: "oil", name: "치명립스틱", saledPrice: "20,000원", salePercent: "16%")
        ]
     
     
@@ -524,7 +523,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case detailCollectionView:
             guard let detailCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReccomendCollectionViewCell.identifier, for: indexPath)
                     as? ReccomendCollectionViewCell else {return UICollectionViewCell() }
-            detailCell.dataBind(model: recommendList[indexPath.item])
+            detailCell.dataBind(model: DetailList[indexPath.item])
             return detailCell
         default:
             guard let tabCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabCollectionViewCell.identifier, for: indexPath)
