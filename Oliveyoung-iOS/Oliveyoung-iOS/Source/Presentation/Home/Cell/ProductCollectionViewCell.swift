@@ -10,8 +10,8 @@ import SnapKit
 
 import Kingfisher
 
-class ReccomendCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ReccomendCollectionViewCell"
+class ProductCollectionViewCell: UICollectionViewCell {
+    static let identifier = "ProductCollectionViewCell"
     
     private let ContainerView = UIView()
     private let ImageView = UIImageView()
@@ -45,7 +45,7 @@ class ReccomendCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Extensions
 
-extension ReccomendCollectionViewCell {
+extension ProductCollectionViewCell {
     
     // MARK: - Layout Helpers
     
@@ -61,13 +61,13 @@ extension ReccomendCollectionViewCell {
             $0.top.equalToSuperview().offset(8)
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().offset(9)
-//            $0.height.equalTo(192)
+            $0.height.equalTo(256)
         }
         
         ImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.height.equalTo(120)
-            $0.width.equalTo(105)
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(184)
+//            $0.width.equalTo(105)
         }
         
         brandLabel.snp.makeConstraints {
@@ -91,17 +91,21 @@ extension ReccomendCollectionViewCell {
         
     }
     
-    // MARK: - General Helpers
-    func configureUI(product: Product) {
-        brandLabel.text = product.brandName
-        nameLabel.text = product.name
-        price.text = product.saledPrice
-        percent.text = product.salePercent
-        guard let url = URL(string: product.mainImg) else { return }
-        ImageView.kf.setImage(with: url)
-    }
+//    // MARK: - General Helpers
+//    func configureUI(product: Product) {
+//        brandLabel.text = product.brandName
+//        nameLabel.text = product.name
+//        price.text = product.saledPrice
+//        percent.text = product.salePercent
+//        guard let url = URL(string: product.mainImg) else { return }
+//        ImageView.kf.setImage(with: url)
+//    }
 //brandName: self.brandName, mainImg: self.mainImg, name: self.name, saledPrice: self.saledPrice, salePercent: self.salePercent
-    func dataBind(model: Recommend) {
-       
+    func dataBind(model: resultProductModel) {
+        brandLabel.text = model.Brand
+        nameLabel.text = model.Name
+        ImageView.image = UIImage(named: model.Image)
+        price.text = model.Price
+        percent.text = model.Percent
     }
 }
